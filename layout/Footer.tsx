@@ -96,10 +96,10 @@ function Footer() {
                   <Image className="w-[35px] h-[35px]" src="/facebook.svg" alt="Facebook" width={35} height={35} />
                 </a>
                 <a href="#">
-                  <Image className="w-[35px] h-[35px]" src="/Twitter.svg" alt="Twitter" width={35} height={35} />
+                  <Image className="w-[35px] h-[35px]" src="/twitter.svg" alt="Twitter" width={35} height={35} />
                 </a>
                 <a href="#">
-                  <Image className="w-[35px] h-[35px]" src="/Linkedin.svg" alt="Linkedin" width={35} height={35} />
+                  <Image className="w-[35px] h-[35px]" src="/linkedin.svg" alt="Linkedin" width={35} height={35} />
                 </a>
               </div>
             </div>
