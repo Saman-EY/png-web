@@ -1,103 +1,129 @@
+import InternetIcon from "@/assets/svgs/InternetIcon";
+import ShapesIcon from "@/assets/svgs/ShapesIcon";
+import Header from "@/layout/Header";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Header />
+      <section className=" pb-10 pt-5 px-5">
+        {/* titles */}
+        <div className="flex items-center justify-center flex-col gap-3">
+          <h1 className="font-bold text-lg sm:text-3xl  flex items-center gap-3 ">
+            <Image src="/lock.svg" className="w-10 md:w-auto" alt="logo" width={60} height={82} /> Copyright Policy
+          </h1>
+          <h6 className="text-lg">Last updated: July 6, 2025</h6>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* content */}
+        <section className="bg-white py-10 px-5 rounded-3xl mt-3">
+          <p className="font-bold text-lg">
+            We at PNG2.COM respect intellectual property rights and expect our users to do the same. This Copyright
+            Policy outlines our practices regarding copyrighted content on our plat.
+          </p>
+
+          <div className="flex flex-col gap-4 my-5">
+            <h5 className="font-bold text-xl flex items-center gap-3">
+              {/* icon */}
+              <Image src="/ownership.svg" className="" alt="logo" width={60} height={60} />
+              Ownership of Content
+            </h5>
+
+            <p>
+              Unless otherwise stated, all images, graphics, illustrations, Ul designs, and website content on PNG2. COM
+              are either owned by us or licensed to us. These works are protected under international copyright laws on
+              our.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4 my-5">
+            <h5 className="font-bold text-xl flex items-center gap-3">
+              {/* icon */}
+              <Image src="/permitted.svg" className="" alt="logo" width={60} height={60} />
+              Permitted Usage
+            </h5>
+
+            <p>You are allowed to:</p>
+            <ul>
+              <li>• Browse and dowNoad PNG images for personal or non-commeral use.</li>
+              <li>• Share images with proper credit, where applicable.</li>
+            </ul>
+            <p>You are NOT allowed to:</p>
+            <ul>
+              <li>• Resell, disredstribute, or relipload our content to other websites or</li>
+              <li>• Ciaim ownership of any content from PNG2.COM.</li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 my-5">
+            <h5 className="font-bold text-xl flex items-center gap-3">
+              {/* icon */}
+              <Image src="/user-submit.svg" className="" alt="logo" width={60} height={60} />
+              User-Submitted Content
+            </h5>
+
+            <p>If you upload or share content on PNG2. COM, you must ensure:</p>
+            <ul>
+              <li>• You own the rights to that content.</li>
+              <li>• It does not infringe on any third paty rights.</li>
+            </ul>
+          </div>
+        </section>
+
+        <h6 className="font-bold text-xl my-10">Steps to remove an image from cleanpng</h6>
+
+        {/* form */}
+        <form className="flex flex-col gap-5" action="#">
+          <label htmlFor="name" className="flex flex-col gap-3">
+            <span>* Your name:</span>
+            <input type="text" className="bg-white border-black border rounded-lg py-2 px-3 max-w-120" />
+          </label>
+          <label htmlFor="name" className="flex flex-col gap-3">
+            <span>* Your email:</span>
+            <input type="text" className="bg-white border-black border rounded-lg py-2 px-3 max-w-120" />
+          </label>
+          <label htmlFor="name" className="flex flex-col gap-3">
+            <span>* Subject:</span>
+            <input
+              type="text"
+              placeholder="Remove an image from website"
+              className="bg-gray-200 border-black  rounded-lg py-2 px-3 max-w-120"
+            />
+          </label>
+          <label htmlFor="name" className="flex flex-col gap-3">
+            <span>* Your URL of the copyrighted work:</span>
+            <input type="text" className="bg-white border-black border rounded-lg py-2 px-3 max-w-120" />
+          </label>
+          <label htmlFor="name" className="flex flex-col gap-3">
+            <span>* Reported URL on website:</span>
+            <input
+              type="text"
+              placeholder="https://www.cleanpng.com/png-farmer-with-........."
+              className="bg-white border-black border rounded-lg py-2 px-3 max-w-120"
+            />
+          </label>
+          <label htmlFor="name" className="flex flex-col gap-3">
+            <span>* Identify and describe the copyrighted work:</span>
+            <textarea
+              rows={5}
+              placeholder="https://www.cleanpng.com/png-farmer-with-........."
+              className="bg-white resize-none border-black border rounded-lg py-2 px-3 max-w-120"
+            />
+          </label>
+
+          <div>
+            <label htmlFor="name" className="flex flex-col gap-3">
+              <span>* Code</span>
+              <input type="text" className="bg-white border-black border rounded-lg py-2 px-3 max-w-30" />
+            </label>
+          </div>
+
+          <button className="bg-[#5AB696] w-fit rounded-xl px-5 py-2 text-lg font-medium hover:bg-[#51a688] transition-all  shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026] text-white">
+            SUBMIT
+          </button>
+        </form>
+      </section>
+    </>
   );
 }
