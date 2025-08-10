@@ -1,5 +1,6 @@
 import InternetIcon from "@/assets/svgs/InternetIcon";
 import ShapesIcon from "@/assets/svgs/ShapesIcon";
+import Footer from "@/layout/Footer";
 import Header from "@/layout/Header";
 import Image from "next/image";
 
@@ -7,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className=" pb-10 pt-5 px-5">
+      <section className=" w-full max-w-[1320px] mx-auto pb-10 pt-5 px-5">
         {/* titles */}
         <div className="flex items-center justify-center flex-col gap-3">
           <h1 className="font-bold text-lg sm:text-3xl  flex items-center gap-3 ">
@@ -124,6 +125,7 @@ export default function Home() {
           </button>
         </form>
       </section>
+      <Footer />
     </>
   );
 }
