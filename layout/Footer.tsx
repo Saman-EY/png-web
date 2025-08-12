@@ -5,7 +5,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-[#FFFFFF80]  pt-10 md:pt-20 px-4 pb-10">
+    <footer className="bg-[#FFFFFF80]  pt-10 md:pt-20 px-4 pb-10 ">
       <section className="w-full max-w-[1180px] mx-auto ">
         {/* first row */}
         <div className="flex flex-wrap justify-center gap-10 md:gap-3 md:flex-nowrap  md:flex-row md:justify-between md:items-start">

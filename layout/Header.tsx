@@ -14,13 +14,13 @@ function Header() {
 
       <ul className=" gap-5 items-center font-bold hidden md:flex text-lg">
         <li>
-          <Link href="#">Home</Link>
+          <Link href="/">Home</Link>
         </li>
         <li>
           <Link href="#">Trends</Link>
         </li>
         <li>
-          <Link href="#">Policy</Link>
+          <Link href="/copyright-policy">Policy</Link>
         </li>
         <li>
           <Link href="#">About Us</Link>
