@@ -20,7 +20,7 @@ function PNGContainer({ data }: { data: PngItemT[] }) {
   return (
     <>
       <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5">
-        {data?.slice(0, visibleCount).map((png) => (
+        {data?.slice(0, visibleCount).map((png, indx) => (
           <div key={png.href} className="mb-4 break-inside-avoid">
             <PngCard item={png} />
           </div>

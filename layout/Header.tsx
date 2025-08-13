@@ -133,7 +133,7 @@ function Header() {
             <div
               ref={dropdownRef}
               onClick={() => null}
-              className="bg-white absolute top-[85%] left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden"
+              className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
             >
               <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
                 Animals
