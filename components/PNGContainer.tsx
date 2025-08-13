@@ -1,12 +1,12 @@
 "use client";
 import { useLandingPngsQry } from "@/hooks/queries";
-import { PngItemT } from "@/types";
+import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-function PNGContainer({ data }: { data: PngItemT[] }) {
+function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: PngItemDetailT[] }) {
   // const { data: temp, isLoading, isError } = useLandingPngsQry();
 
   // console.log("* PNGContainer data:", temp);
@@ -20,9 +20,9 @@ function PNGContainer({ data }: { data: PngItemT[] }) {
   return (
     <>
       <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5">
-        {data?.slice(0, visibleCount).map((png, indx) => (
+        {data?.slice(0, visibleCount).map((png) => (
           <div key={png.href} className="mb-4 break-inside-avoid">
-            <PngCard item={png} />
+            <PngCard item={png} detailsData={detailsData} />
           </div>
         ))}
       </section>
@@ -43,16 +43,18 @@ function PNGContainer({ data }: { data: PngItemT[] }) {
 
 export default PNGContainer;
 
-export const PngCard = ({ item }: { item: PngItemT }) => {
+export const PngCard = ({ item, detailsData }: { item: PngItemT; detailsData: PngItemDetailT[] }) => {
   // const slugs = data.map((item) => item.href.split("/").filter(Boolean).pop());
   const slug = getSlug(item.href);
+
+  const matchedItemDetails: PngItemDetailT = detailsData.find((item: PngItemDetailT) => getSlug(item.href) === slug)!;
 
   return (
     <Link href={slug!} className="border rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto block">
       <Image width={+item.width} height={+item.height} src={item["data-original"]} alt={item.title} />
       <div className="bg-[#F9E0E3] flex font-semibold  divide-x-2">
-        <button className="flex-1 p-3">30MB</button>
-        <button className="flex-1 p-3">800*800</button>
+        <button className="flex-1 p-3">{matchedItemDetails.Size}</button>
+        <button className="flex-1 p-3">{matchedItemDetails.Resolution}</button>
       </div>
     </Link>
   );

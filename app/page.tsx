@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Loader from "@/components/Loader";
 import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
+import axios from "axios";
 
 const TagsData = ["Animals", "Nature", "Food", "Technology", "Sports", "People"];
 
@@ -10,13 +11,17 @@ const TagsData = ["Animals", "Nature", "Food", "Technology", "Sports", "People"]
 async function PNGContainerWithData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cleanpng.landing.json`);
+    const detailsData = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
+
+    console.log("**", detailsData);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
 
     const data = await response.json();
-    return <PNGContainer data={data} />;
+
+    return <PNGContainer data={data} detailsData={detailsData.data} />;
   } catch (error) {
     console.error("Failed to fetch data:", error);
     return <div className="text-red-500 p-4">Failed to load images. Please try again later.</div>;
