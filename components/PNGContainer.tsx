@@ -4,12 +4,15 @@ import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
 
 function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: PngItemDetailT[] }) {
   // const { data: temp, isLoading, isError } = useLandingPngsQry();
-
   // console.log("* PNGContainer data:", temp);
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get("search");
 
   const [visibleCount, setVisibleCount] = useState(25);
 
@@ -17,17 +20,23 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
     setVisibleCount((prev) => prev + 25);
   };
 
+  const filteredData = useMemo(() => {
+    if (!search) return data;
+    const query = search.toLowerCase();
+    return data.filter((item) => item.title.toLowerCase().includes(query));
+  }, [data, search]);
+
   return (
     <>
       <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5">
-        {data?.slice(0, visibleCount).map((png) => (
+        {filteredData.slice(0, visibleCount).map((png) => (
           <div key={png.href} className="mb-4 break-inside-avoid">
             <PngCard item={png} detailsData={detailsData} />
           </div>
         ))}
       </section>
 
-      {visibleCount < data.length && (
+      {visibleCount < filteredData.length && (
         <div className="flex justify-center mt-6">
           <button
             onClick={handleShowMore}
