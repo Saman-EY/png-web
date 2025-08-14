@@ -14,7 +14,7 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
 
-  const [visibleCount, setVisibleCount] = useState(25);
+  const [visibleCount, setVisibleCount] = useState(100);
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 25);
@@ -62,8 +62,8 @@ export const PngCard = ({ item, detailsData }: { item: PngItemT; detailsData: Pn
     <Link href={slug!} className="border rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto block">
       <Image width={+item.width} height={+item.height} src={item["data-original"]} alt={item.title} />
       <div className="bg-[#F9E0E3] flex font-semibold  divide-x-2">
-        <button className="flex-1 p-3">{matchedItemDetails.Size}</button>
-        <button className="flex-1 p-3">{matchedItemDetails.Resolution}</button>
+        <button className="flex-1 p-3">{matchedItemDetails?.Size || "-"}</button>
+        <button className="flex-1 p-3">{matchedItemDetails?.Resolution || "-"}</button>
       </div>
     </Link>
   );

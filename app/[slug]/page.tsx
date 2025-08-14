@@ -68,17 +68,17 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
             <div className="flex justify-between w-full max-w-[70%] mx-auto mb-8 mt-8">
               <div className="flex flex-col gap-2 font-bold min-w-30 ">
                 <span className="text-emerald-700 ">Contributor:</span>
-                <span>{matchedItemDetails.Contributor}</span>
+                <span>{matchedItemDetails.Contributor ?? "-"}</span>
               </div>
               <div className="flex flex-col gap-2 font-bold min-w-30 ">
                 <span className="text-emerald-700 ">Resolution:</span>
-                <span>{matchedItemDetails.Resolution}</span>
+                <span>{matchedItemDetails.Resolution ?? "-"}</span>
               </div>
             </div>
             <div className="flex justify-between w-full max-w-[70%] mx-auto">
               <div className="flex flex-col gap-2 font-bold min-w-30 ">
                 <span className="text-emerald-700 ">File Size:</span>
-                <span>{matchedItemDetails.Size}</span>
+                <span>{matchedItemDetails.Size ?? "-"}</span>
               </div>
               <div className="flex flex-col gap-2 font-bold min-w-30 ">
                 <span className="text-emerald-700 ">Category:</span>
