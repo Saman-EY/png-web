@@ -97,7 +97,9 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
           </section>
 
           <div className="flex items-center justify-center my-5 w-full">
-            <button className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">Free Downloadd</button>
+            <Link href={`/${slug}/download`} className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">
+              Free Downloadd
+            </Link>
           </div>
 
           <TempAd />

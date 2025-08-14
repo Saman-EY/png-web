@@ -5,7 +5,7 @@ import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
 import axios from "axios";
 
-const TagsData = ["Animals", "Nature", "Food", "Technology", "Sports", "People"];
+const TagsData = ["Girl", "Boy", "Cartoon", "Charecter", "Anime", "Zombie"];
 
 // Move the PNGContainer to a separate component that can be suspended
 async function PNGContainerWithData() {
