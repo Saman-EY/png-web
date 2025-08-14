@@ -1,5 +1,4 @@
 "use client";
-import { useLandingPngsQry } from "@/hooks/queries";
 import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
@@ -14,7 +13,7 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
 
-  const [visibleCount, setVisibleCount] = useState(100);
+  const [visibleCount, setVisibleCount] = useState(25);
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 25);
