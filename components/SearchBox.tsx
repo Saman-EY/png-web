@@ -9,7 +9,10 @@ function SearchBox() {
   const router = useRouter();
 
   const searchParams = useSearchParams();
-  const search = searchParams.get("search"); 
+  const search = searchParams.get("search");
+  const category = searchParams.get("category");
+
+  console.log("**cat", category);
 
   useEffect(() => {
     if (search) {
@@ -32,11 +35,17 @@ function SearchBox() {
     // Debounce navigation
     timeoutRef.current = setTimeout(() => {
       const query = value.trim();
-      if (query) {
-        router.push(`/?search=${encodeURIComponent(query)}`);
-      } else {
-        router.push("/"); // ✅ clear query params
+      let url = "/";
+
+      if (query && category) {
+        url = `/?search=${encodeURIComponent(query)}&category=${category}`;
+      } else if (query) {
+        url = `/?search=${encodeURIComponent(query)}`;
+      } else if (category) {
+        url = `/?category=${category}`;
       }
+
+      router.push(url);
     }, 500);
   };
 

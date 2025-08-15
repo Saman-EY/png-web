@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
+const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
+
 function Header() {
   const [open, setOpen] = useState(false);
   const [openLinks, setOpenLinks] = useState(false);
@@ -137,7 +139,17 @@ function Header() {
                 onClick={() => null}
                 className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
               >
-                <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
+                {TagsData.slice(0, 4).map((tag, index) => (
+                  <Link
+                    href={`/?category=${tag}`}
+                    key={index}
+                    onClick={() => setOpen(false)}
+                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block "
+                  >
+                    {tag}
+                  </Link>
+                ))}
+                {/* <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
                   Animals
                 </button>
                 <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
@@ -148,7 +160,7 @@ function Header() {
                 </button>
                 <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
                   Hearts
-                </button>
+                </button> */}
               </div>
             )}
           </div>
@@ -178,7 +190,11 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/copyright-policy" onClick={() => setDrawer(false)} className="block py-3 text-lg font-semibold">
+            <Link
+              href="/copyright-policy"
+              onClick={() => setDrawer(false)}
+              className="block py-3 text-lg font-semibold"
+            >
               Policy
             </Link>
           </li>

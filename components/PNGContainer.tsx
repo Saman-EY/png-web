@@ -12,6 +12,7 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
 
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
+  const category = searchParams.get("category");
 
   const [visibleCount, setVisibleCount] = useState(25);
 
@@ -20,10 +21,20 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
   };
 
   const filteredData = useMemo(() => {
-    if (!search) return data;
-    const query = search.toLowerCase();
-    return data.filter((item) => item.title.toLowerCase().includes(query));
-  }, [data, search]);
+    let filtered = data;
+
+    if (search) {
+      const query = search.toLowerCase();
+      filtered = filtered.filter((item) => item.title.toLowerCase().includes(query));
+    }
+
+    if (category) {
+      const categoryQuery = category.toLowerCase();
+      filtered = filtered.filter((item) => item.title.toLowerCase().includes(categoryQuery));
+    }
+
+    return filtered;
+  }, [data, search, category]);
 
   return (
     <>
@@ -34,6 +45,8 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
           </div>
         ))}
       </section>
+
+      {filteredData.length === 0 && <div className="text-center text-xl text-gray-500 mt-10">No results found.</div>}
 
       {visibleCount < filteredData.length && (
         <div className="flex justify-center mt-6">
