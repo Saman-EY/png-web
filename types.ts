@@ -1,3 +1,21 @@
+export interface tableT {
+  isIcon: boolean;
+
+  header: {
+    title1: string;
+    title2: string;
+    title3: string;
+    title4: string;
+  };
+
+  data: {
+    content1: string;
+    content2: string;
+    content3: string;
+    content4: string;
+  }[];
+}
+
 export interface PngItemT {
   href: string;
   title: string;
