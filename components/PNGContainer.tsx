@@ -1,4 +1,5 @@
 "use client";
+import { useLandingPngsQry } from "@/hooks/queries";
 import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";

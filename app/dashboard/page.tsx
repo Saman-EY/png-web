@@ -2,21 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import BrokenImage from "./components/BrokenImage";
 import CustomTable from "./components/CustomTable";
+import Chart from "./components/Chart";
 
 async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: string | undefined }> }) {
   const { tab } = await searchParams; // "search"
 
-
   return (
     <section>
       {/* card container */}
-      <div className="w-full max-w-[1320px] mx-auto mt-10 mb-5 flex gap-5 justify-center ">
+      <div className="w-full max-w-[1320px] mx-auto mt-10 mb-5 flex flex-wrap gap-5 justify-center ">
         {/* carad */}
         <Link
           href={"/dashboard?tab=most-viewd"}
           className="rounded-2xl bg-white px-4 py-4 flex items-center justify-center gap-3 w-full max-w-55 shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026]"
         >
-          <span className="rounded-full w-10 h-10 flex bg-[#F9E0E3] items-center justify-center shrink-0">
+          <span className="rounded-full hidden md:flex w-10 h-10 bg-[#F9E0E3] items-center justify-center shrink-0">
             <Image className="mr-1" src="/eyeIcon.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
@@ -29,7 +29,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
           href={"/dashboard?tab=most-downloaded"}
           className="rounded-2xl bg-white px-4 py-4 flex items-center justify-center gap-3 w-full max-w-55 shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026]"
         >
-          <span className="rounded-full w-10 h-10 flex bg-[#F9E0E3] items-center justify-center shrink-0">
+          <span className="rounded-full hidden md:flex w-10 h-10 bg-[#F9E0E3] items-center justify-center shrink-0">
             <Image className="mr-1" src="/arrowLongDown.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
@@ -42,7 +42,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
           href={"/dashboard?tab=traffic-by-search"}
           className="rounded-2xl bg-white px-4 py-4 flex items-center justify-center gap-3 w-full max-w-55 shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026]"
         >
-          <span className="rounded-full w-10 h-10 flex bg-[#F9E0E3] items-center justify-center shrink-0">
+          <span className="rounded-full hidden md:flex w-10 h-10 bg-[#F9E0E3] items-center justify-center shrink-0">
             <Image className="mr-1" src="/earth.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
@@ -55,7 +55,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
           href={"/dashboard?tab=traffic-by-country"}
           className="rounded-2xl bg-white px-4 py-4 flex items-center justify-center gap-3 w-full max-w-55 shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026]"
         >
-          <span className="rounded-full w-10 h-10 flex bg-[#F9E0E3] items-center justify-center shrink-0">
+          <span className="rounded-full hidden md:flex w-10 h-10 bg-[#F9E0E3] items-center justify-center shrink-0">
             <Image className="mr-1" src="/steeringWheel.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
@@ -65,25 +65,23 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
         </Link>
       </div>
 
-      {tab === "most-viewd" ? (
-        <CustomTable data={topViewedData} />
-      ) : tab === "most-downloaded" ? (
-        <CustomTable data={topViewedData} />
-      ) : tab === "traffic-by-search" ? (
-        <CustomTable data={searchEngineData} />
-      ) : tab === "traffic-by-country" ? (
-        <CustomTable data={countryData} />
-      ) : (
-        <CustomTable data={topViewedData} />
-      )}
+      <section className="px-5">
+        {tab === "most-viewd" ? (
+          <CustomTable data={topViewedData} />
+        ) : tab === "most-downloaded" ? (
+          <CustomTable data={topViewedData} />
+        ) : tab === "traffic-by-search" ? (
+          <CustomTable data={searchEngineData} />
+        ) : tab === "traffic-by-country" ? (
+          <CustomTable data={countryData} />
+        ) : (
+          <CustomTable data={topViewedData} />
+        )}
 
-      <BrokenImage />
+        <BrokenImage />
 
-      {/* CHART */}
-      <section className="bg-white w-full max-w-[950px] mx-auto shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026] rounded-2xl p-5 mb-20">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit, non. Assumenda labore aspernatur similique
-        repudiandae, magnam, dolorum dolorem ab sint alias adipisci, quo voluptas repellendus ratione sapiente eius
-        delectus obcaecati.
+        {/* CHART */}
+        <Chart />
       </section>
     </section>
   );

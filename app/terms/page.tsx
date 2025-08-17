@@ -12,18 +12,18 @@ function TermsPage() {
         <h6 className="font-bold mb-5">Your Agreement</h6>
         <div className="termText overflow-y-auto max-h-[60vh] px-5" dangerouslySetInnerHTML={{ __html: text }} />
 
-        <div className="mt-8 flex items-center justify-between ">
+        <div className="mt-8 flex items-center justify-between flex-wrap gap-5">
           <label className="flex items-center gap-2">
             <input checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} type="checkbox" />
             <span>I confirm that I have read and accept the terms and conditions and privacy policy.</span>
           </label>
 
-          <div className="flex items-center gap-4">
-            <button className="bg-slate-300 text-sm rounded-lg px-4 py-2">Cancel</button>
+          <div className="flex items-center gap-4  w-full md:w-auto flex-col-reverse md:flex-row">
+            <button className="bg-slate-300 text-sm rounded-lg px-4 py-2 w-full md:w-auto">Cancel</button>
             <button
               onClick={() => setModal(true)}
               disabled={!isChecked}
-              className={`bg-emerald-200 text-sm rounded-lg px-6 py-2  ${
+              className={`bg-emerald-200 text-sm rounded-lg px-6 py-2  w-full md:w-auto ${
                 !isChecked && "opacity-50 !cursor-not-allowed"
               } `}
             >
@@ -143,7 +143,10 @@ const text = `<p><strong>Last Revised:</strong> December 16, 2025</p>
 const Modal = ({ setModal }: { setModal: Dispatch<SetStateAction<boolean>> }) => {
   return (
     <div onClick={() => setModal(false)} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div onClick={(e) => e.stopPropagation()} className="bg-white p-5 rounded-lg shadow-lg max-w-2xl w-full py-12 overflow-auto flex flex-col items-center justify-center">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white p-5 rounded-lg shadow-lg max-w-2xl w-full mx-5 py-12 overflow-auto flex flex-col items-center justify-center"
+      >
         <h2 className="text-xl font-bold mb-7">Form Submitted Successfully!</h2>
 
         <p className="font-black max-w-100 text-sm text-center">
