@@ -1,9 +1,10 @@
 import SearchBox from "@/components/SearchBox";
-import { SimilarCards, TempAd } from "../page";
 import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import Link from "next/link";
+import { TempAd } from "../components/TempAd";
+import { SimilarCards } from "../components/SimilarCards";
 
 async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -61,13 +62,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
           </div>
         </section>
 
-
-
-
-
-
         <SimilarCards landingData={landingData} />
-
       </section>
     );
   } catch (error) {

@@ -4,6 +4,8 @@ import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import Link from "next/link";
+import { TempAd } from "./components/TempAd";
+import { SimilarCards } from "./components/SimilarCards";
 
 async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -118,47 +120,3 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
 }
 
 export default DetailPage;
-
-export const TempAd = () => {
-  return (
-    <div className="w-full max-w-[1200px] rounded-2xl bg-white mx-auto h-40 font-bold flex items-center justify-center my-8">
-      Ad
-    </div>
-  );
-};
-
-const PngOverlayCard = ({ item }: { item: PngItemT }) => {
-  const slug = getSlug(item.href);
-
-  return (
-    <Link
-      href={`/${slug}`}
-      key={item.href}
-      className="mb-4 border rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto relative block"
-    >
-      <Image
-        width={+item.width}
-        height={+item.height}
-        src={item["data-original"]}
-        alt={item.title}
-        className="w-full object-cover"
-      />
-
-      <div className="bg-white/70 absolute px-5 py-2 bottom-0 left-0 right-0 font-bold">{item.title}</div>
-    </Link>
-  );
-};
-
-export const SimilarCards = ({ landingData }: { landingData: PngItemT[] }) => {
-  return (
-    <section className="w-full max-w-[1100px] mx-auto">
-      <h2 className="text-2xl font-bold mb-10">Similar Photo</h2>
-
-      <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5 mb-10">
-        {landingData.slice(0, 15).map((png: PngItemT) => (
-          <PngOverlayCard item={png} key={png.href} />
-        ))}
-      </section>
-    </section>
-  );
-};

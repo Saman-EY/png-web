@@ -90,3 +90,16 @@ textarea {
     box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
   }
 }
+
+
+.termText {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+.termText h2 {
+  font-weight: 600;
+}
+.termText strong {
+  font-weight: 600;
+}
