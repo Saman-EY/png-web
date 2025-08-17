@@ -22,7 +22,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const matchedItemDetails: PngItemDetailT = data.find((item: PngItemDetailT) => getSlug(item.href) === slug);
     const matchedItemLanding: PngItemT = landingData.find((item: PngItemT) => getSlug(item.href) === slug);
 
-    // console.log("*details", slug, matchedItemDetails, matchedItemLanding);
+    const tags = matchedItemDetails.tag.split(",").map((tag: string) => tag.trim());
 
     if (!matchedItemDetails) {
       return (
@@ -56,6 +56,9 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
               <h5 className="font-semibold text-lg md:mt-10">{matchedItemDetails.title}</h5>
 
               <p>{matchedItemDetails.Description}</p>
+              <Link href={`/${slug}/copyright-policy`} className="text-[#BC90FF] font-semibold hover:underline">
+                &copy; Copyright Policy
+              </Link>
             </div>
           </section>
 
@@ -88,12 +91,12 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
           </section>
 
           {/* TAGS */}
-          <section className="w-full max-w-[800px] mx-auto px-5 py-10 flex gap-5 flex-wrap justify-center">
-            <span className="border rounded-xl bg-white font-bold px-5 py-3 min-w-44 text-center">Angry Dastan</span>
-            <span className="border rounded-xl bg-white font-bold px-5 py-3 min-w-44 text-center">Angry Dastan</span>
-            <span className="border rounded-xl bg-white font-bold px-5 py-3 min-w-44 text-center">Angry Dastan</span>
-            <span className="border rounded-xl bg-white font-bold px-5 py-3 min-w-44 text-center">Angry Dastan</span>
-            <span className="border rounded-xl bg-white font-bold px-5 py-3 min-w-44 text-center">Angry Dastan</span>
+          <section className="w-full max-w-[800px] mx-auto px-5 py-10 flex gap-4 flex-wrap justify-center">
+            {tags.map((tag: string, index: number) => (
+              <span key={index} className="border rounded-xl bg-white font-bold px-5 py-3 min-w-44 text-center">
+                {tag}
+              </span>
+            ))}
           </section>
 
           <div className="flex items-center justify-center my-5 w-full">
@@ -104,27 +107,19 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
 
           <TempAd />
 
-          <section className="w-full max-w-[1100px] mx-auto">
-            <h2 className="text-2xl font-bold mb-10">Similar Photo</h2>
-
-            <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5 mb-10">
-              {landingData.slice(0, 15).map((png: PngItemT) => (
-                <PngOverlayCard item={png} key={png.href} />
-              ))}
-            </section>
-          </section>
+          <SimilarCards landingData={landingData} />
         </section>
       </>
     );
   } catch (error) {
     console.error("Failed to fetch data:", error);
-    return <div className="text-red-500 p-4">Failed to load Dataa. Please try again later.</div>;
+    return <div className="text-red-500 p-4">Failed to load Data. Please try again later.</div>;
   }
 }
 
 export default DetailPage;
 
-const TempAd = () => {
+export const TempAd = () => {
   return (
     <div className="w-full max-w-[1200px] rounded-2xl bg-white mx-auto h-40 font-bold flex items-center justify-center my-8">
       Ad
@@ -151,5 +146,19 @@ const PngOverlayCard = ({ item }: { item: PngItemT }) => {
 
       <div className="bg-white/70 absolute px-5 py-2 bottom-0 left-0 right-0 font-bold">{item.title}</div>
     </Link>
+  );
+};
+
+export const SimilarCards = ({ landingData }: { landingData: PngItemT[] }) => {
+  return (
+    <section className="w-full max-w-[1100px] mx-auto">
+      <h2 className="text-2xl font-bold mb-10">Similar Photo</h2>
+
+      <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5 mb-10">
+        {landingData.slice(0, 15).map((png: PngItemT) => (
+          <PngOverlayCard item={png} key={png.href} />
+        ))}
+      </section>
+    </section>
   );
 };

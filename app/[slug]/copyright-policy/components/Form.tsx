@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Form() {
+  const [url, setUrl] = useState("");
+  const [value, setValue] = useState("");
+
+  const finalUrl = url.substring(0, url.lastIndexOf("/"));
+
+  console.log("*Final URL:", finalUrl);
+
+  useEffect(() => {
+    setUrl(window.location.href); // full current URL
+  }, []);
+
+  useEffect(() => {
+    setValue(finalUrl);
+  }, [finalUrl]);
+
   return (
     <form className="flex flex-col gap-5" action="#">
       <label htmlFor="name" className="flex flex-col gap-3">
@@ -27,7 +42,9 @@ function Form() {
         <span>* Reported URL on website:</span>
         <input
           type="text"
-          placeholder="https://www.cleanpng.com/png-farmer-with-........."
+          // placeholder={finalUrl}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
           className="bg-white border-black border rounded-lg py-2 px-3 max-w-120"
         />
       </label>
@@ -35,7 +52,7 @@ function Form() {
         <span>* Identify and describe the copyrighted work:</span>
         <textarea
           rows={5}
-          placeholder="https://www.cleanpng.com/png-farmer-with-........."
+          // placeholder={finalUrl}
           className="bg-white resize-none border-black border rounded-lg py-2 px-3 max-w-120"
         />
       </label>

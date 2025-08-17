@@ -12,7 +12,6 @@ function SearchBox() {
   const search = searchParams.get("search");
   const category = searchParams.get("category");
 
-  console.log("**cat", category);
 
   useEffect(() => {
     if (search) {

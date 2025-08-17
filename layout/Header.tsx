@@ -52,7 +52,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-[#FFFFFF80] py-5 px-5 flex justify-between  sticky top-0 backdrop-blur-[4px]">
+      <header className="bg-[#FFFFFF80] py-5 px-5 flex justify-between  sticky top-0  backdrop-blur-[4px] z-30">
         <button onClick={() => setDrawer(true)} className="block md:hidden">
           <BarsIcon />
         </button>
@@ -104,7 +104,7 @@ function Header() {
             )}
           </li>
           <li>
-            <Link href="/copyright-policy">Policy</Link>
+            <Link href="/terms">Policy</Link>
           </li>
           <li>
             <Link href="#">About Us</Link>
@@ -191,7 +191,8 @@ function Header() {
           </li>
           <li>
             <Link
-              href="/copyright-policy"
+              // href="/copyright-policy"
+              href="/terms"
               onClick={() => setDrawer(false)}
               className="block py-3 text-lg font-semibold"
             >

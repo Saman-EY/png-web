@@ -59,16 +59,16 @@ function Footer() {
         {/* second row */}
         <div className="flex flex-col md:flex-row items-center gap-4">
           {/* card */}
-          <div className="bg-[#DCEFFE80] rounded p-6 px-10 relative w-[340px] md:shrink-0 mt-5 md:-mt-10">
+          <div className="bg-[#DCEFFE80] rounded p-6 md:px-10 relative w-full max-w-[340px] md:shrink-0 mt-5 md:-mt-10">
             {/* <div className="flex flex-col px-2"> */}
             <h6 className="font-bold text-lg mb-3">Subscribe</h6>
             <div className="flex">
               <input
                 type="text"
-                className="border border-slate-300 py-2 px-4 rounded-lg border-r-0 rounded-r-none w-44"
+                className="border border-slate-300 py-2 px-4 rounded-lg border-r-0 rounded-r-none w-full max-w-44"
                 placeholder="Email adress"
               />
-              <button className="bg-black h-[41px] border border-black w-[50px] rounded-r-lg hover:bg-black/80 transition-all flex items-center justify-center">
+              <button className="bg-black h-[41px] border border-black w-[50px]  shrink-0 min-w-10 rounded-r-lg hover:bg-black/80 transition-all flex items-center justify-center">
                 <RightArrow />
               </button>
             </div>
@@ -84,7 +84,7 @@ function Footer() {
           <div className="border-t border-slate-300 pt-8 px-6 mt-5 md:-mt-10 w-full">
             <div className="flex flex-wrap gap-5 md:flex-nowrap items-center justify-between">
               {/* links */}
-              <div className="flex items-center gap-8 text-black font-bold">
+              <div className="flex items-center flex-wrap gap-8 text-black font-bold">
                 <a href="#">Terms</a>
                 <a href="#">Privacy</a>
                 <a href="#">Cookies</a>

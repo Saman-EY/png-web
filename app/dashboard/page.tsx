@@ -6,7 +6,6 @@ import CustomTable from "./components/CustomTable";
 async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: string | undefined }> }) {
   const { tab } = await searchParams; // "search"
 
-  console.log("*", tab);
 
   return (
     <section>

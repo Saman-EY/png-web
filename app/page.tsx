@@ -14,7 +14,6 @@ async function PNGContainerWithData() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cleanpng.landing.json`);
     const detailsData = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
 
-    console.log("**", detailsData);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
@@ -37,7 +36,7 @@ export default async function Home({
   const params = await searchParams;
   const { category, search } = params;
 
-  console.log("**queries", category, search);
+  // console.log("**queries", category, search);
 
   const currentQuery = search ? `search=${search}` : "";
 

@@ -1,4 +1,5 @@
 "use client";
+import { useLandingPngsQry } from "@/hooks/queries";
 import { PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
@@ -8,7 +9,7 @@ import { useMemo, useState } from "react";
 
 function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: PngItemDetailT[] }) {
   // const { data: temp, isLoading, isError } = useLandingPngsQry();
-  // console.log("* PNGContainer data:", temp);
+  // console.log("*PNGContainer data:", temp);
 
   const searchParams = useSearchParams();
   const search = searchParams.get("search");

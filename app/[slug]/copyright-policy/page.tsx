@@ -1,8 +1,10 @@
+"use client";
 import Image from "next/image";
-import React from "react";
 import Form from "./components/Form";
 
 function CopyRightPage() {
+
+
   return (
     <section className="w-full max-w-[1320px] mx-auto pb-10 pt-5 px-5">
       {/* titles */}
