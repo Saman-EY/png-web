@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import BrokenImage from "./components/BrokenImage";
 import CustomTable from "./components/CustomTable";
 import Chart from "./components/Chart";

@@ -4,7 +4,7 @@ import Loader from "@/components/Loader";
 import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
 import axios from "axios";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 

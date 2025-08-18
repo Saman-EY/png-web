@@ -2,20 +2,65 @@
 import BarsIcon from "@/assets/svgs/BarsIcon";
 import InternetIcon from "@/assets/svgs/InternetIcon";
 import ShapesIcon from "@/assets/svgs/ShapesIcon";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { useLocale } from "next-intl";
 
-const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
+// const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
+const Languages = [
+  { name: "English", prefix: "en" },
+  { name: "French", prefix: "fr" },
+  { name: "Spanish", prefix: "es" },
+  { name: "German", prefix: "de" },
+  { name: "Portuguese", prefix: "pt" },
+];
 
 function Header() {
+  const [currentLocale, setCurrentLocale] = useState("English");
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [openLinks, setOpenLinks] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdown2Ref = useRef<HTMLDivElement>(null);
+  const LangdropdownRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const btnRef2 = useRef<HTMLButtonElement>(null);
+  const LangbtnRef = useRef<HTMLButtonElement>(null);
+
+  const LNav = useTranslations("NavbarLinks");
+  const LCat = useTranslations();
+  const TagsData = LCat.raw("Cats");
+
+  const locale = useLocale();
+
+  useEffect(() => {
+    setCurrentLocale(locale);
+
+    switch (locale) {
+      case "en": {
+        return setCurrentLocale("English");
+      }
+      case "fr": {
+        return setCurrentLocale("French");
+      }
+      case "es": {
+        return setCurrentLocale("Spanish");
+      }
+      case "de": {
+        return setCurrentLocale("German");
+      }
+      case "pt": {
+        return setCurrentLocale("Portuguese");
+      }
+
+      default: {
+        return setCurrentLocale("English");
+      }
+    }
+  }, [locale]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -26,6 +71,21 @@ function Header() {
         !dropdownRef.current.contains(e.target as Node)
       ) {
         setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        LangbtnRef.current &&
+        LangdropdownRef.current &&
+        !LangbtnRef.current.contains(e.target as Node) &&
+        !LangdropdownRef.current.contains(e.target as Node)
+      ) {
+        setOpen2(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -59,11 +119,11 @@ function Header() {
 
         <ul className=" gap-8 items-center font-bold hidden md:flex text-lg">
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">{LNav("home")}</Link>
           </li>
           <li className="relative">
             <button ref={btnRef2} onClick={() => setOpenLinks(!openLinks)} className="flex items-center gap-1">
-              Trends <Image src={"/arrowDown.svg"} alt="" width={10} height={10} />{" "}
+              {LNav("trends")} <Image src={"/arrowDown.svg"} alt="" width={10} height={10} />{" "}
             </button>
             {/* dropdown */}
             {openLinks && (
@@ -104,10 +164,10 @@ function Header() {
             )}
           </li>
           <li>
-            <Link href="/terms">Policy</Link>
+            <Link href="/terms">{LNav("policy")}</Link>
           </li>
           <li>
-            <Link href="#">About Us</Link>
+            <Link href="#">{LNav("about")}</Link>
           </li>
         </ul>
 
@@ -130,7 +190,7 @@ function Header() {
               }  hover:bg-slate-100 transition-colors bg-white shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D]  md:px-4 flex items-center p-2`}
             >
               <ShapesIcon />
-              <span className=" hidden md:block font-semibold text-sm">Categories</span>
+              <span className=" hidden md:block font-semibold text-sm">{LNav("categories")}</span>
             </button>
             {/* dropdown */}
             {open && (
@@ -139,7 +199,7 @@ function Header() {
                 onClick={() => null}
                 className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
               >
-                {TagsData.slice(0, 4).map((tag, index) => (
+                {TagsData.slice(0, 4).map((tag: string, index: number) => (
                   <Link
                     href={`/?category=${tag}`}
                     key={index}
@@ -149,25 +209,42 @@ function Header() {
                     {tag}
                   </Link>
                 ))}
-                {/* <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
-                  Animals
-                </button>
-                <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
-                  Food
-                </button>
-                <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
-                  Flowers
-                </button>
-                <button onClick={() => setOpen(false)} className="px-2 py-3 hover:bg-slate-100 w-full">
-                  Hearts
-                </button> */}
               </div>
             )}
           </div>
-          <button className="hover:bg-slate-100 w-[43px] h-[43px] md:w-auto md:h-auto transition-all bg-white shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D] rounded-full p-2 md:px-4 flex items-center ">
-            <InternetIcon />
-            <span className="text-sm font-semibold hidden md:block">English</span>
-          </button>
+          <div className="relative">
+            <button
+              ref={LangbtnRef}
+              onClick={() => setOpen2(!open2)}
+              className={`  ${
+                open2 ? "rounded-t-3xl" : "rounded-full"
+              }  hover:bg-slate-100 transition-colors bg-white shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D]  md:px-4 flex items-center p-2`}
+            >
+              <InternetIcon />
+              <span className="text-sm font-semibold hidden md:block">{currentLocale}</span>
+            </button>
+
+            {/* dropdown */}
+            {open2 && (
+              <div
+                ref={LangdropdownRef}
+                onClick={() => null}
+                className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
+              >
+                {Languages.map((lang, index) => (
+                  <Link
+                    href={`/`}
+                    locale={lang.prefix}
+                    key={index}
+                    onClick={() => setOpen(false)}
+                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block "
+                  >
+                    {lang.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         {/* </div> */}
       </header>

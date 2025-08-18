@@ -1,0 +1,11 @@
+{
+  "NavbarLinks": {
+    "home": "Home",
+    "trends": "Trends",
+    "policy": "Policy",
+    "about": "About Us",
+    "categories": "Categories"
+  },
+
+  "Cats": ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"]
+}

@@ -1,0 +1,10 @@
+{
+  "NavbarLinks": {
+    "home": "Início",
+    "trends": "Tendências",
+    "policy": "Política",
+    "about": "Sobre nós",
+    "categories": "Categorias"
+  },
+  "Cats": ["Menina", "Menino", "Desenho animado", "Personagem", "Anime", "Zumbi"]
+}

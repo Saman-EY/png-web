@@ -1,7 +1,7 @@
 import { PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export const PngOverlayCard = ({ item }: { item: PngItemT }) => {
   const slug = getSlug(item.href);
