@@ -5,9 +5,11 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { TempAd } from "../components/TempAd";
 import { SimilarCards } from "../components/SimilarCards";
+import { getTranslations } from "next-intl/server";
 
 async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const t = await getTranslations("downloadPage");
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
@@ -51,13 +53,13 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
           />
 
           <div className="flex flex-col justify-center items-center w-full md:w-1/2 gap-5">
-            <h6 className="font-bold text-2xl">Size: {matchedItemDetails.Size}</h6>
+            <h6 className="font-bold text-2xl">{t('size')} {matchedItemDetails.Size}</h6>
             <Link href={`/${slug}/download`} className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">
-              Free Downloadd
+              {t('freeDownload')} 
             </Link>
             <div className="font-semibold text-lg flex flex-col">
-              <span>- Unlimited downloads</span>
-              <span>- No attribution</span>
+              <span>- {t('unlimitedDownloads')}</span>
+              <span>- {t('noAttribution')}</span>
             </div>
           </div>
         </section>

@@ -29,5 +29,22 @@
     "privacy": "Privacidade",
     "cookies": "Cookies",
     "inputPlaceholder": "Endereço de e-mail"
+  },
+
+  "Details": {
+    "copyRight": "Política de direitos autorais",
+    "imageDetails": "Detalhes da imagem",
+    "contributor": "Colaborador",
+    "resolution": "Resolução",
+    "fileSize": "Tamanho do arquivo",
+    "category": "Categoria",
+    "freeDownload": "Download gratuito",
+    "similar": "Foto semelhante"
+  },
+  "downloadPage": {
+    "size": "Tamanho:",
+    "freeDownload": "Download gratuito",
+    "unlimitedDownloads": "Downloads ilimitados",
+    "noAttribution": "Sem atribuição"
   }
 }

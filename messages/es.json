@@ -7,7 +7,7 @@
     "categories": "Categorías"
   },
   "Cats": ["Niña", "Niño", "Dibujo animado", "Personaje", "Anime", "Zombie"],
-   "Landing": {
+  "Landing": {
     "title": "Imagen PNG gratis",
     "subtitle": "Con fondos transparentes",
     "showMoreBtn": "Ver más",
@@ -29,5 +29,22 @@
     "privacy": "Privacidad",
     "cookies": "Cookies",
     "inputPlaceholder": "Dirección de correo electrónico"
+  },
+
+  "Details": {
+    "copyRight": "Política de copyright",
+    "imageDetails": "Detalles de la imagen",
+    "contributor": "Colaborador",
+    "resolution": "Resolución",
+    "fileSize": "Tamaño de archivo",
+    "category": "Categoría",
+    "freeDownload": "Descarga gratuita",
+    "similar": "Foto similar"
+  },
+  "downloadPage": {
+    "size": "Tamaño:",
+    "freeDownload": "Descarga gratuita",
+    "unlimitedDownloads": "Descargas ilimitadas",
+    "noAttribution": "Sin atribución"
   }
 }

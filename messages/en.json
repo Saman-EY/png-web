@@ -6,16 +6,13 @@
     "about": "About Us",
     "categories": "Categories"
   },
-
   "Cats": ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"],
-
   "Landing": {
     "title": "Free PNG Image",
     "subtitle": "With Transparent Backgrounds",
     "showMoreBtn": "Show More",
     "searchPlaceHolder": "Search PNG image..."
   },
-
   "Footer": {
     "home": "Home",
     "download": "Download",
@@ -32,5 +29,22 @@
     "privacy": "Privacy",
     "cookies": "Cookies",
     "inputPlaceholder": "Email address"
+  },
+
+  "Details": {
+    "copyRight": "Copyright Policy",
+    "imageDetails": "Image Details",
+    "contributor": "Contributor",
+    "resolution": "Resolution",
+    "fileSize": "File Size",
+    "category": "Category",
+    "freeDownload": "Free Download",
+    "similar": "Similar Photo"
+  },
+  "downloadPage": {
+    "size": "Size:",
+    "freeDownload": "Free Download",
+    "unlimitedDownloads": "Unlimited downloads",
+    "noAttribution": "No attribution"
   }
 }
