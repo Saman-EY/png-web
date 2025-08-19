@@ -46,5 +46,57 @@
     "freeDownload": "Téléchargement gratuit",
     "unlimitedDownloads": "Téléchargements illimités",
     "noAttribution": "Sans attribution"
+  },
+
+  "TermsPage": {
+    "yourAgreement": "Votre accord :",
+    "policyText": "Je confirme avoir lu et accepté les conditions générales et la politique de confidentialité.",
+    "cancel": "Annuler :",
+    "accept": "Accepter :",
+    "modalTitle": "Formulaire soumis avec succès !",
+    "modalText1": "Il est bien établi qu’un lecteur sera distrait par un contenu lisible.",
+    "modalText2": "L’intérêt d’utiliser le Lorem Ipsum est qu’il présente une distribution de lettres plus ou moins normale, contrairement à un texte classique.",
+    "modalText3": "Le passage standard du Lorem Ipsum utilisé depuis les années 1500.",
+    "modalBtn": " J’ai compris, merci !",
+    "termFullText": "<p><strong>Dernière révision :</strong> 16 décembre 2025</p><p>Bienvenue sur <strong>www.lorem-ipsum.info</strong>. Ce site est fourni comme un service à nos visiteurs et peut être utilisé uniquement à des fins d’information. Comme les Conditions générales contiennent des obligations légales, veuillez les lire attentivement.</p><h2>1. Votre accord</h2><p>En utilisant ce site, vous acceptez d’être lié par ces Conditions générales et de vous y conformer. Si vous n’acceptez pas ces Conditions générales, veuillez ne pas utiliser ce site.</p><p><strong>VEUILLEZ NOTER :</strong> Nous nous réservons le droit, à notre seule discrétion, de modifier ou de changer ces Conditions générales à tout moment. Sauf indication contraire, les modifications prendront effet immédiatement. Veuillez consulter régulièrement ces Conditions générales. Votre utilisation continue du site après la publication de modifications constituera votre acceptation des Conditions générales révisées et la reconnaissance de la raisonnabilité de ces normes de notification des changements. Pour votre information, cette page a été mise à jour pour la dernière fois à la date indiquée en haut de ces conditions générales.</p><h2>2. Confidentialité</h2><p>Veuillez consulter notre Politique de confidentialité, qui régit également votre visite sur ce site, afin de comprendre nos pratiques.</p><h2>3. Sites liés</h2><p>Ce site peut contenir des liens vers d’autres sites Web tiers indépendants (« Sites liés »). Ces Sites liés sont fournis uniquement pour la commodité de nos visiteurs. Ces sites ne sont pas sous notre contrôle, et nous ne sommes pas responsables et n’approuvons pas leur contenu, y compris toute information ou tout matériel qu’ils contiennent. Vous devrez exercer votre propre jugement concernant votre interaction avec ces Sites liés.</p><h2>4. Déclarations prospectives</h2><p>Tous les documents reproduits sur ce site s’expriment à la date originale de publication ou de dépôt. Le fait qu’un document soit disponible sur ce site ne signifie pas que les informations contenues n’ont pas été modifiées ou remplacées par des événements ou par un document ultérieur. Nous n’avons aucune obligation de mettre à jour les informations ou déclarations contenues sur ce site. Par conséquent, elles ne doivent pas être considérées comme actuelles à la date de votre consultation.</p><h2>5. Clause de non-responsabilité et limitation de responsabilité</h2><p><strong>A.</strong> Ce site peut contenir des inexactitudes et des erreurs typographiques. Nous ne garantissons pas l’exactitude ni l’exhaustivité des documents ni la fiabilité de tout conseil, opinion, déclaration ou autre information affichée ou distribuée via le site. Vous comprenez et acceptez expressément que :</p><ul><li>Votre utilisation du site se fait à vos propres risques ;</li><li>Le site est fourni « tel quel » et « selon disponibilité » ;</li><li>Nous déclinons toute garantie de quelque nature que ce soit, expresse ou implicite ;</li><li>Nous ne garantissons aucun résultat spécifique de l’utilisation du site ;</li><li>Télécharger du contenu se fait à votre propre discrétion et à vos risques ;</li><li>Vous serez seul responsable de tout dommage ou perte de données.</li></ul><p><strong>B.</strong> Vous comprenez et acceptez qu’en aucune circonstance, y compris la négligence, nous ne pourrons être tenus responsables de tout dommage direct, indirect, accessoire, spécial, punitif ou consécutif résultant de l’utilisation ou de l’impossibilité d’utiliser nos sites.</p><h2>6. Exclusions et limitations</h2><p>Certains pays n’autorisent pas l’exclusion de certaines garanties ou la limitation de responsabilité pour les dommages accessoires ou consécutifs. Par conséquent, notre responsabilité dans ces juridictions sera limitée dans toute la mesure permise par la loi.</p><h2>7. Nos droits de propriété</h2><p>Ce site et tout son contenu sont destinés uniquement à un usage personnel et non commercial. Sauf disposition expresse contraire, rien sur le site ne peut être interprété comme conférant une licence au titre de nos droits de propriété intellectuelle ou de ceux de tiers. Sans limiter ce qui précède, vous reconnaissez et acceptez que tout contenu disponible et utilisé pour exploiter le site et ses services est protégé par des droits d’auteur, de marque, de brevet ou d’autres droits de propriété.</p><ul><li>Ne modifiez pas, n’altérez pas et ne déformez pas les marques déposées.</li><li>Ne vous présentez pas comme sponsorisé ou affilié avec nous.</li><li>N’utilisez pas les marques ou contenus à des fins non autorisées.</li><li>Ne nous diffamez ni ne nous dénigrez.</li><li>N’adaptez pas, ne décompilez pas, ne désassemblez pas et ne reconstituez pas le site.</li></ul><p>Le cadrage, le miroir, le scraping ou l’exploration de données du site ou de son contenu, sous toute forme et par toute méthode, est strictement interdit.</p><h2>8. Indemnité</h2><p>En utilisant le site, vous acceptez de nous indemniser et de tenir indemnes nos entités affiliées contre toute réclamation et dépense, y compris les frais d’avocat, résultant de votre utilisation du site.</p><h2>9. Avis de droits d’auteur et de marques</h2><p>Sauf notre texte fictif généré, qui est libre d’utilisation à titre privé et commercial, tous les autres textes sont protégés par des droits d’auteur. generator.lorem-ipsum.info © 2013, tous droits réservés.</p><h2>10. Réclamations pour atteinte à la propriété intellectuelle</h2><p>Notre politique est de répondre rapidement aux réclamations d’atteinte aux droits de propriété intellectuelle. Nous traiterons et enquêterons rapidement sur les notifications d’atteinte présumée et prendrons les mesures appropriées en vertu de la DMCA et des autres lois applicables. Les notifications doivent être adressées à :</p><address>generator.lorem-ipsum.info<br />126 Electricov St.<br />Kiev, Kiev 04176<br />Ukraine<br />contact@lorem-ipsum.info</address><h2>11. Lieu d’exécution</h2><p>Ce site est contrôlé, exploité et administré depuis nos bureaux à Kiev, en Ukraine. Nous ne faisons aucune déclaration indiquant que les contenus sont appropriés ou disponibles en dehors de l’Ukraine. Si vous accédez à ce site depuis un autre pays, vous êtes responsable du respect des lois locales.</p><h2>12. Général</h2><p><strong>A.</strong> Si une disposition de ces Conditions générales est jugée invalide ou inapplicable, elle sera supprimée ou interprétée de manière à être applicable, et les autres dispositions resteront en vigueur.</p><p><strong>B.</strong> Pas de coentreprise, pas de dérogation de droits. Vous acceptez qu’aucune relation de coentreprise, partenariat, emploi ou agence n’existe entre vous et nous du fait de ces Conditions générales ou de votre utilisation du site.</p>"
+  },
+
+  "Dashboard": {
+    "mostViewd": "Le plus consulté",
+    "mostDownloaded": "Le plus téléchargé",
+    "bySearchEngine": "Source de trafic par moteur de recherche",
+    "byCountry": "Source de trafic par pays"
+  },
+  "CopyRightPage": {
+    "title": "Politique de copyright2",
+    "subTitle": "Dernière mise à jour : 6 juillet 2025",
+    "text1": "Chez PNG2.COM, nous respectons les droits de propriété intellectuelle et attendons de nos utilisateurs qu'ils fassent de même. Cette politique de copyright décrit nos pratiques concernant le contenu protégé sur notre plateforme.",
+    "CHead1": "Propriété du contenu",
+    "CText1": "Sauf indication contraire, toutes les images, graphiques, illustrations, conceptions UI et contenus du site web sur PNG2.COM sont soit détenus par nous, soit sous licence. Ces œuvres sont protégées par les lois internationales sur le copyright.",
+    "CHead2": "Utilisation autorisée",
+    "CText2": {
+      "f1": "Vous êtes autorisé à :",
+      "f2": "Parcourir et télécharger des images PNG pour un usage personnel ou non commercial.",
+      "f3": "Partager des images avec crédit approprié, si applicable.",
+      "f4": "Vous n'êtes PAS autorisé à :",
+      "f5": "Revendre, redistribuer ou re-téléverser notre contenu sur d'autres sites web.",
+      "f6": "Revendiquer la propriété de tout contenu provenant de PNG2.COM."
+    },
+    "CHead3": "Contenu soumis par l'utilisateur",
+    "CText3": {
+      "f1": "Si vous téléversez ou partagez du contenu sur PNG2.COM, vous devez vous assurer :",
+      "f2": "Que vous possédez les droits sur ce contenu.",
+      "f3": "Que cela ne viole aucun droit de tiers."
+    },
+    "FormHeader": "Étapes pour supprimer une image de cleanpng",
+    "input1Label": "Votre nom :",
+    "input2Label": "Votre email :",
+    "input3Label": "Sujet :",
+    "input3Place": "Supprimer une image du site",
+    "input4Label": "URL de l’œuvre protégée :",
+    "input5Label": "URL signalée sur le site :",
+    "input6Label": "Identifier et décrire l’œuvre protégée :",
+    "input7Label": "Code",
+    "submitBtn": "SOUMETTRE"
   }
 }

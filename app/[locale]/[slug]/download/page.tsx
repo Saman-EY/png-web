@@ -53,13 +53,15 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
           />
 
           <div className="flex flex-col justify-center items-center w-full md:w-1/2 gap-5">
-            <h6 className="font-bold text-2xl">{t('size')} {matchedItemDetails.Size}</h6>
+            <h6 className="font-bold text-2xl">
+              {t("size")} {matchedItemDetails.Size}
+            </h6>
             <Link href={`/${slug}/download`} className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">
-              {t('freeDownload')} 
+              {t("freeDownload")}
             </Link>
             <div className="font-semibold text-lg flex flex-col">
-              <span>- {t('unlimitedDownloads')}</span>
-              <span>- {t('noAttribution')}</span>
+              <span>- {t("unlimitedDownloads")}</span>
+              <span>- {t("noAttribution")}</span>
             </div>
           </div>
         </section>

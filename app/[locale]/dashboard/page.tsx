@@ -3,9 +3,12 @@ import { Link } from "@/i18n/navigation";
 import BrokenImage from "./components/BrokenImage";
 import CustomTable from "./components/CustomTable";
 import Chart from "./components/Chart";
+import { getTranslations } from "next-intl/server";
 
 async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: string | undefined }> }) {
   const { tab } = await searchParams; // "search"
+
+  const t = await getTranslations("Dashboard");
 
   return (
     <section>
@@ -20,7 +23,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/eyeIcon.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">Most viewd</h6>
+            <h6 className="font-bold">{t('mostViewd')}</h6>
             <span>hot-deal.org</span>
           </div>
         </Link>
@@ -33,7 +36,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/arrowLongDown.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">Most downloaded</h6>
+            <h6 className="font-bold">{t('mostDownloaded')}</h6>
             <span>hot-deal.org</span>
           </div>
         </Link>
@@ -46,7 +49,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/earth.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">Traffic source by search engine</h6>
+            <h6 className="font-bold">{t('bySearchEngine')}</h6>
             <span>Google</span>
           </div>
         </Link>
@@ -59,7 +62,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/steeringWheel.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">Traffic source by country</h6>
+            <h6 className="font-bold">{t('byCountry')}</h6>
             <span>Iran</span>
           </div>
         </Link>
