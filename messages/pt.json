@@ -6,5 +6,28 @@
     "about": "Sobre nós",
     "categories": "Categorias"
   },
-  "Cats": ["Menina", "Menino", "Desenho animado", "Personagem", "Anime", "Zumbi"]
+  "Cats": ["Menina", "Menino", "Desenho animado", "Personagem", "Anime", "Zumbi"],
+  "Landing": {
+    "title": "Imagem PNG gratuita",
+    "subtitle": "Com fundos transparentes",
+    "showMoreBtn": "Ver mais",
+    "searchPlaceHolder": "Pesquisar imagem PNG..."
+  },
+  "Footer": {
+    "home": "Início",
+    "download": "Baixar",
+    "search": "Pesquisar",
+    "categories": "Categorias",
+    "company": "Empresa",
+    "aboutus": "Sobre nós",
+    "partners": "Parceiros",
+    "customers": "Clientes",
+    "contactUs": "Contate-nos",
+    "subscribe": "Inscrever-se",
+    "subText": "Olá, somos a ABC. Estamos tentando reunir as pessoas certas para que você obtenha os melhores resultados. Apenas uma ideia",
+    "terms": "Termos",
+    "privacy": "Privacidade",
+    "cookies": "Cookies",
+    "inputPlaceholder": "Endereço de e-mail"
+  }
 }

@@ -6,5 +6,28 @@
     "about": "À propos de nous",
     "categories": "Catégories"
   },
-  "Cats": ["Fille", "Garçon", "Dessin animé", "Personnage", "Anime", "Zombie"]
+  "Cats": ["Fille", "Garçon", "Dessin animé", "Personnage", "Anime", "Zombie"],
+  "Landing": {
+    "title": "Image PNG gratuite",
+    "subtitle": "Avec arrière-plans transparents",
+    "showMoreBtn": "Voir plus",
+    "searchPlaceHolder": "Rechercher une image PNG..."
+  },
+  "Footer": {
+    "home": "Accueil",
+    "download": "Télécharger",
+    "search": "Rechercher",
+    "categories": "Catégories",
+    "company": "Entreprise",
+    "aboutus": "À propos de nous",
+    "partners": "Partenaires",
+    "customers": "Clients",
+    "contactUs": "Contactez-nous",
+    "subscribe": "S'abonner",
+    "subText": "Bonjour, nous sommes ABC. Nous essayons de mettre les bonnes personnes à votre disposition pour obtenir les meilleurs résultats. Juste un aperçu",
+    "terms": "Conditions",
+    "privacy": "Confidentialité",
+    "cookies": "Cookies",
+    "inputPlaceholder": "Adresse e-mail"
+  }
 }

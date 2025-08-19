@@ -263,7 +263,7 @@ function Header() {
         <ul>
           <li>
             <Link href="/" onClick={() => setDrawer(false)} className="block py-3 text-lg font-semibold">
-              Home
+              {LNav("home")}
             </Link>
           </li>
           <li>
@@ -273,12 +273,12 @@ function Header() {
               onClick={() => setDrawer(false)}
               className="block py-3 text-lg font-semibold"
             >
-              Policy
+              {LNav("policy")}
             </Link>
           </li>
           <li>
             <Link href="/" onClick={() => setDrawer(false)} className="block py-3 text-lg font-semibold">
-              About Us
+              {LNav("about")}
             </Link>
           </li>
         </ul>

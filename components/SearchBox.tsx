@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -12,6 +13,7 @@ function SearchBox() {
   const search = searchParams.get("search");
   const category = searchParams.get("category");
 
+  const t = useTranslations("Landing");
 
   useEffect(() => {
     if (search) {
@@ -60,7 +62,7 @@ function SearchBox() {
         value={serachValue}
         onChange={handleSearch}
         type="text"
-        placeholder="Search PNG image..."
+        placeholder={t("searchPlaceHolder")}
         className="w-full"
       />
     </div>

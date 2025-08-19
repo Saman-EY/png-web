@@ -6,16 +6,18 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 
 function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: PngItemDetailT[] }) {
   // const { data: temp, isLoading, isError } = useLandingPngsQry();
   // console.log("*PNGContainer data:", temp);
+  const [visibleCount, setVisibleCount] = useState(25);
 
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
   const category = searchParams.get("category");
 
-  const [visibleCount, setVisibleCount] = useState(25);
+  const t = useTranslations("Landing");
 
   const handleShowMore = () => {
     setVisibleCount((prev) => prev + 25);
@@ -55,7 +57,7 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
             onClick={handleShowMore}
             className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-400 transition"
           >
-            Show More
+            {t('showMoreBtn')}
           </button>
         </div>
       )}

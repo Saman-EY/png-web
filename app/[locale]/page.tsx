@@ -5,6 +5,7 @@ import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
 import axios from "axios";
 import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
 const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 
@@ -13,7 +14,6 @@ async function PNGContainerWithData() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cleanpng.landing.json`);
     const detailsData = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
-
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
@@ -33,10 +33,11 @@ export default async function Home({
 }: {
   searchParams: Promise<{ search?: string | undefined; category?: string | undefined }>;
 }) {
-  const params = await searchParams;
-  const { category, search } = params;
+  const { category, search } = await searchParams;
 
-  // console.log("**queries", category, search);
+  const t = await getTranslations("Landing");
+
+  console.log("**queries", category, search);
 
   const currentQuery = search ? `search=${search}` : "";
 
@@ -52,9 +53,9 @@ export default async function Home({
             width={78}
             height={78}
           />
-          Free PNG Image
+          {t("title")}
         </h1>
-        <h6 className="text-lg font-semibold">With Transparent Backgrounds</h6>
+        <h6 className="text-lg font-semibold">{t("subtitle")}</h6>
       </div>
 
       {/* SEARCH BOX */}

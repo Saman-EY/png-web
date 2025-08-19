@@ -6,5 +6,28 @@
     "about": "Sobre nosotros",
     "categories": "Categorías"
   },
-  "Cats": ["Niña", "Niño", "Dibujo animado", "Personaje", "Anime", "Zombie"]
+  "Cats": ["Niña", "Niño", "Dibujo animado", "Personaje", "Anime", "Zombie"],
+   "Landing": {
+    "title": "Imagen PNG gratis",
+    "subtitle": "Con fondos transparentes",
+    "showMoreBtn": "Ver más",
+    "searchPlaceHolder": "Buscar imagen PNG..."
+  },
+  "Footer": {
+    "home": "Inicio",
+    "download": "Descargar",
+    "search": "Buscar",
+    "categories": "Categorías",
+    "company": "Empresa",
+    "aboutus": "Sobre nosotros",
+    "partners": "Socios",
+    "customers": "Clientes",
+    "contactUs": "Contáctanos",
+    "subscribe": "Suscribirse",
+    "subText": "Hola, somos ABC. Tratamos de reunir a las personas adecuadas para que obtengas los mejores resultados. Solo una idea",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "inputPlaceholder": "Dirección de correo electrónico"
+  }
 }

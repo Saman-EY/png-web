@@ -6,5 +6,28 @@
     "about": "Über uns",
     "categories": "Kategorien"
   },
-  "Cats": ["Mädchen", "Junge", "Cartoon", "Charakter", "Anime", "Zombie"]
+  "Cats": ["Mädchen", "Junge", "Cartoon", "Charakter", "Anime", "Zombie"],
+  "Landing": {
+    "title": "Kostenloses PNG-Bild",
+    "subtitle": "Mit transparentem Hintergrund",
+    "showMoreBtn": "Mehr anzeigen",
+    "searchPlaceHolder": "PNG-Bild suchen..."
+  },
+  "Footer": {
+    "home": "Startseite",
+    "download": "Herunterladen",
+    "search": "Suchen",
+    "categories": "Kategorien",
+    "company": "Unternehmen",
+    "aboutus": "Über uns",
+    "partners": "Partner",
+    "customers": "Kunden",
+    "contactUs": "Kontaktieren Sie uns",
+    "subscribe": "Abonnieren",
+    "subText": "Hallo, wir sind ABC. Wir versuchen, die richtigen Leute für Sie zusammenzubringen, um die besten Ergebnisse zu erzielen. Nur ein Einblick",
+    "terms": "Bedingungen",
+    "privacy": "Datenschutz",
+    "cookies": "Cookies",
+    "inputPlaceholder": "E-Mail-Adresse"
+  }
 }

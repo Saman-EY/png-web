@@ -7,5 +7,30 @@
     "categories": "Categories"
   },
 
-  "Cats": ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"]
+  "Cats": ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"],
+
+  "Landing": {
+    "title": "Free PNG Image",
+    "subtitle": "With Transparent Backgrounds",
+    "showMoreBtn": "Show More",
+    "searchPlaceHolder": "Search PNG image..."
+  },
+
+  "Footer": {
+    "home": "Home",
+    "download": "Download",
+    "search": "Search",
+    "categories": "Categories",
+    "company": "Company",
+    "aboutus": "About us",
+    "partners": "Partners",
+    "customers": "Customers",
+    "contactUs": "Contact us",
+    "subscribe": "Subscribe",
+    "subText": "Hello, we are ABC. trying to make an effort to put the right people for you to get the best results. Just insight",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "inputPlaceholder": "Email address"
+  }
 }

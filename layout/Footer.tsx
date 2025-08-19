@@ -1,9 +1,15 @@
 import RightArrow from "@/assets/svgs/RightArrow";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import React from "react";
+import React, { use } from "react";
+import { useTranslations } from "next-intl";
 
 function Footer() {
+  const t = useTranslations("Footer");
+
+  const b = useTranslations();
+  const Cats = b.raw("Cats");
+
   return (
     <footer className="bg-[#FFFFFF80]  pt-10 md:pt-20 px-4 pb-10 ">
       <section className="w-full max-w-[1180px] mx-auto ">
@@ -16,42 +22,42 @@ function Footer() {
             width={210}
             height={60}
           />
-          
+
           {/* links */}
           <ul className="flex flex-col gap-3">
-            <h6 className="font-bold text-xl">Home</h6>
+            <h6 className="font-bold text-xl">{t("home")}</h6>
             <li className="text-slate-500 text-sm">
-              <Link href="#">Download</Link>
+              <Link href="#">{t("download")}</Link>
             </li>
             <li className="text-slate-500 text-sm">
-              <Link href="#">Search</Link>
-            </li>
-          </ul>
-          <ul className="flex flex-col gap-3">
-            <h6 className="font-bold text-xl">Categories</h6>
-            <li className="text-slate-500 text-sm">
-              <Link href="#">Animals</Link>
-            </li>
-            <li className="text-slate-500 text-sm">
-              <Link href="#">Color</Link>
-            </li>
-            <li className="text-slate-500 text-sm">
-              <Link href="#">Flowers</Link>
+              <Link href="#">{t("search")}</Link>
             </li>
           </ul>
           <ul className="flex flex-col gap-3">
-            <h6 className="font-bold text-xl">Company</h6>
+            <h6 className="font-bold text-xl">{t("categories")}</h6>
             <li className="text-slate-500 text-sm">
-              <Link href="#">About us</Link>
+              <Link href={`/?category=${Cats[0]}`}>{Cats[0]}</Link>
             </li>
             <li className="text-slate-500 text-sm">
-              <Link href="#">Partners</Link>
+              <Link href={`/?category=${Cats[1]}`}>{Cats[1]}</Link>
             </li>
             <li className="text-slate-500 text-sm">
-              <Link href="#">Customers</Link>
+              <Link href={`/?category=${Cats[2]}`}>{Cats[2]}</Link>
+            </li>
+          </ul>
+          <ul className="flex flex-col gap-3">
+            <h6 className="font-bold text-xl">{t("company")}</h6>
+            <li className="text-slate-500 text-sm">
+              <Link href="#">{t("aboutus")}</Link>
             </li>
             <li className="text-slate-500 text-sm">
-              <Link href="#">Contact us</Link>
+              <Link href="#">{t("partners")}</Link>
+            </li>
+            <li className="text-slate-500 text-sm">
+              <Link href="#">{t("customers")}</Link>
+            </li>
+            <li className="text-slate-500 text-sm">
+              <Link href="#">{t("contactUs")}</Link>
             </li>
           </ul>
         </div>
@@ -61,22 +67,19 @@ function Footer() {
           {/* card */}
           <div className="bg-[#DCEFFE80] rounded p-6 md:px-10 relative w-full max-w-[340px] md:shrink-0 mt-5 md:-mt-10">
             {/* <div className="flex flex-col px-2"> */}
-            <h6 className="font-bold text-lg mb-3">Subscribe</h6>
+            <h6 className="font-bold text-lg mb-3">{t("subscribe")}</h6>
             <div className="flex">
               <input
                 type="text"
                 className="border border-slate-300 py-2 px-4 rounded-lg border-r-0 rounded-r-none w-full max-w-44"
-                placeholder="Email adress"
+                placeholder={t("inputPlaceholder")}
               />
               <button className="bg-black h-[41px] border border-black w-[50px]  shrink-0 min-w-10 rounded-r-lg hover:bg-black/80 transition-all flex items-center justify-center">
                 <RightArrow />
               </button>
             </div>
 
-            <p className="text-slate-500 text-sm mt-10 max-w-60 w-full">
-              Hello, we are ABC. trying to make an effort to put the right people for you to get the best results. Just
-              insight
-            </p>
+            <p className="text-slate-500 text-sm mt-10 max-w-60 w-full">{t("subText")}</p>
             {/* </div> */}
           </div>
 
@@ -85,9 +88,9 @@ function Footer() {
             <div className="flex flex-wrap gap-5 md:flex-nowrap items-center justify-between">
               {/* links */}
               <div className="flex items-center flex-wrap gap-8 text-black font-bold">
-                <a href="#">Terms</a>
-                <a href="#">Privacy</a>
-                <a href="#">Cookies</a>
+                <a href="#">{t("terms")}</a>
+                <a href="#">{t("privacy")}</a>
+                <a href="#">{t("cookies")}</a>
               </div>
 
               {/* socials */}
