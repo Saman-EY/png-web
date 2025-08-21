@@ -8,6 +8,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Providers from "../Providers";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +45,14 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_PUBLISHER_ID}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body suppressHydrationWarning className={`${inter.variable} antialiased flex flex-col min-h-screen`}>
         <NextIntlClientProvider>
           <section className="flex-1">

@@ -6,6 +6,7 @@ import SearchBox from "@/components/SearchBox";
 import axios from "axios";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import AdBanner from "@/components/AdBanner";
 
 const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 
@@ -75,6 +76,8 @@ export default async function Home({
           </Link>
         ))}
       </div>
+
+      <AdBanner dataAdFormat="auto" dataFullWidthResponsive={true} dataAdSlot="5884048699" />
 
       {/* PNGs CONTAINER */}
       {/* Dynamic content with loading fallback */}
