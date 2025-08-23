@@ -77,7 +77,7 @@ export default async function Home({
         ))}
       </div>
 
-      <AdBanner dataAdFormat="auto" dataFullWidthResponsive={true} dataAdSlot="5884048699" />
+      {/* <AdBanner dataAdFormat="auto" dataFullWidthResponsive={true} dataAdSlot="5884048699" /> */}
 
       {/* PNGs CONTAINER */}
       {/* Dynamic content with loading fallback */}
