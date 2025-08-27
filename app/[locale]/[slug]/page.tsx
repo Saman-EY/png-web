@@ -48,8 +48,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
           {/* Card and description */}
           <section className="w-full max-w-[800px] mx-auto px-5 py-10 flex flex-col md:flex-row gap-5">
             <Image
-              className="rounded-xl w-full max-w-[250px] mx-auto  md:max-w-[500px] md:h-[400px] object-cover"
-              // width={+matchedItemLanding.width}
+              className="rounded-xl w-full max-w-[250px] mx-auto  md:w-[500px] md:h-[400px] object-cover"
               width={500}
               height={500}
               src={matchedItemLanding["data-original"]}

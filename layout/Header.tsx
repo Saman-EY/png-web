@@ -113,11 +113,11 @@ function Header() {
   return (
     <>
       <header className="bg-[#FFFFFF80] py-5 px-5 flex justify-between  sticky top-0  backdrop-blur-[4px] z-30">
-        <button onClick={() => setDrawer(true)} className="block md:hidden">
+        <button onClick={() => setDrawer(true)} className="block lg:hidden">
           <BarsIcon />
         </button>
 
-        <ul className=" gap-8 items-center font-bold hidden md:flex text-lg">
+        <ul className=" gap-8 items-center font-bold hidden lg:flex text-lg">
           <li>
             <Link href="/">{LNav("home")}</Link>
           </li>
@@ -171,13 +171,15 @@ function Header() {
           </li>
         </ul>
 
-        <Image
-          src="/logo.svg"
-          className="w-[107px] h-[30px] md:w-[160px] lg:w-[207px] md:h-[60px] absolute left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2"
-          alt="logo"
-          width={210}
-          height={60}
-        />
+        <Link href="/">
+          <Image
+            src="/logo.svg"
+            className="w-[107px] h-[30px] md:w-[160px] lg:w-[207px] md:h-[60px] absolute left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2"
+            alt="logo"
+            width={210}
+            height={60}
+          />
+        </Link>
         {/* <div className="w-fit gap-5 min-w-[67%] sm:min-w-[56%] flex items-center justify-between sm:gap-10 "> */}
 
         <div className="flex items-center gap-3">

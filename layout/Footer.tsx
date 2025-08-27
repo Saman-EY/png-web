@@ -14,26 +14,30 @@ function Footer() {
     <footer className="bg-[#FFFFFF80]  pt-10 md:pt-20 px-4 pb-10 ">
       <section className="w-full max-w-[1180px] mx-auto ">
         {/* first row */}
-        <div className="flex flex-wrap justify-center gap-10 md:gap-3 md:flex-nowrap  md:flex-row md:justify-between md:items-start">
-          <Image
-            src="/logo.svg"
-            className="w-full h-[60px]  md:w-[280px] md:h-[80px] "
-            alt="logo"
-            width={210}
-            height={60}
-          />
+        <div className="flex flex-wrap justify-center gap-10 md:gap-3 md:flex-nowrap  md:flex-row md:justify-between md:items-start ">
+          <Link href="/">
+            <Image
+              src="/logo.svg"
+              className="w-full h-[60px]  md:w-[280px] md:h-[80px] "
+              alt="logo"
+              width={210}
+              height={60}
+            />
+          </Link>
 
           {/* links */}
           <ul className="flex flex-col gap-3">
-            <h6 className="font-bold text-xl">{t("home")}</h6>
+            <Link href={"/"}>
+              <h6 className="font-bold text-xl">{t("home")}</h6>
+            </Link>
             <li className="text-slate-500 text-sm">
-              <Link href="#">{t("download")}</Link>
+              <Link href="/">{t("aboutus")}</Link>
             </li>
             <li className="text-slate-500 text-sm">
-              <Link href="#">{t("search")}</Link>
+              <Link href="/terms">{t("privacy")}</Link>
             </li>
           </ul>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 lg:mr-40">
             <h6 className="font-bold text-xl">{t("categories")}</h6>
             <li className="text-slate-500 text-sm">
               <Link href={`/?category=${Cats[0]}`}>{Cats[0]}</Link>
@@ -45,7 +49,7 @@ function Footer() {
               <Link href={`/?category=${Cats[2]}`}>{Cats[2]}</Link>
             </li>
           </ul>
-          <ul className="flex flex-col gap-3">
+          {/* <ul className="flex flex-col gap-3">
             <h6 className="font-bold text-xl">{t("company")}</h6>
             <li className="text-slate-500 text-sm">
               <Link href="#">{t("aboutus")}</Link>
@@ -59,7 +63,7 @@ function Footer() {
             <li className="text-slate-500 text-sm">
               <Link href="#">{t("contactUs")}</Link>
             </li>
-          </ul>
+          </ul> */}
         </div>
 
         {/* second row */}
