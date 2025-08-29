@@ -57,7 +57,7 @@ function PNGContainer({ data, detailsData }: { data: PngItemT[]; detailsData: Pn
             onClick={handleShowMore}
             className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-400 transition"
           >
-            {t('showMoreBtn')}
+            {t("showMoreBtn")}
           </button>
         </div>
       )}
@@ -73,10 +73,25 @@ export const PngCard = ({ item, detailsData }: { item: PngItemT; detailsData: Pn
 
   const matchedItemDetails: PngItemDetailT = detailsData.find((item: PngItemDetailT) => getSlug(item.href) === slug)!;
 
+  console.log("*data", matchedItemDetails);
+
   return (
-    <Link href={slug!} className="border rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto block">
+    <Link href={slug!} className="border group relative rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto block">
       <Image width={+item.width} height={+item.height} src={item["data-original"]} alt={item.title} />
-      <div className="bg-[#F9E0E3] flex font-semibold  divide-x-2">
+
+
+      {/* hover */}
+      <div className=" opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all  absolute top-0 left-0 w-full h-full bg-white/70 z-20 flex flex-col justify-center items-center">
+        <span className="truncate px-3 font-semibold text-lg w-full text-center">{matchedItemDetails.title}</span>
+        <p className="font-medium line-clamp-3 px-3 text-xs mt-3">{matchedItemDetails.Description}</p>
+        <button className="px-4 py-2 bg-green-200 text-xs font-bold absolute bottom-11 rounded-t-full mt-3">
+          Download
+        </button>
+      </div>
+
+
+
+      <div className="bg-[#F9E0E3] flex font-semibold  divide-x-2 z-20 relative">
         <button className="flex-1 p-3">{matchedItemDetails?.Size || "-"}</button>
         <button className="flex-1 p-3">{matchedItemDetails?.Resolution || "-"}</button>
       </div>

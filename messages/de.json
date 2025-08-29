@@ -33,18 +33,18 @@
 
   "Details": {
     "copyRight": "Urheberrechtspolitik",
-    "imageDetails": "Bilddetails",
-    "contributor": "Mitwirkender",
-    "resolution": "Auflösung",
-    "fileSize": "Dateigröße",
-    "category": "Kategorie",
-    "freeDownload": "Kostenloser Download",
+    "freeDownload": "Weiter",
     "similar": "Ähnliches Foto"
   },
   "downloadPage": {
     "size": "Größe:",
     "freeDownload": "Kostenloser Download",
     "unlimitedDownloads": "Unbegrenzte Downloads",
+    "imageDetails": "Bilddetails",
+    "contributor": "Mitwirkender",
+    "resolution": "Auflösung",
+    "fileSize": "Dateigröße",
+    "category": "Kategorie",
     "noAttribution": "Keine Namensnennung"
   },
 

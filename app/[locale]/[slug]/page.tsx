@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { TempAd } from "./components/TempAd";
 import { SimilarCards } from "./components/SimilarCards";
 import { getTranslations } from "next-intl/server";
+import Timer from "./components/Timer";
 
 async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -65,33 +66,9 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
             </div>
           </section>
 
+          <Timer slug={slug} />
+
           <TempAd />
-
-          {/* Details */}
-          <section className="w-full max-w-[800px] bg-white rounded-2xl  shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026] mx-auto p-5 mb-10 pb-12">
-            <h6 className="text-[#BC90FF] font-semibold">{t("imageDetails")} Image Details</h6>
-
-            <div className="flex justify-between w-full max-w-[70%] mx-auto mb-8 mt-8">
-              <div className="flex flex-col gap-2 font-bold min-w-30 ">
-                <span className="text-emerald-700 ">{t("contributor")}</span>
-                <span>{matchedItemDetails.Contributor ?? "-"}</span>
-              </div>
-              <div className="flex flex-col gap-2 font-bold min-w-30 ">
-                <span className="text-emerald-700 ">{t("resolution")}</span>
-                <span>{matchedItemDetails.Resolution ?? "-"}</span>
-              </div>
-            </div>
-            <div className="flex justify-between w-full max-w-[70%] mx-auto">
-              <div className="flex flex-col gap-2 font-bold min-w-30 ">
-                <span className="text-emerald-700 ">{t("fileSize")}</span>
-                <span>{matchedItemDetails.Size ?? "-"}</span>
-              </div>
-              <div className="flex flex-col gap-2 font-bold min-w-30 ">
-                <span className="text-emerald-700 ">{t("category")}</span>
-                <span>-</span>
-              </div>
-            </div>
-          </section>
 
           {/* TAGS */}
           <section className="w-full max-w-[800px] mx-auto px-5 py-10 flex gap-4 flex-wrap justify-center">
@@ -101,12 +78,6 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
               </span>
             ))}
           </section>
-
-          <div className="flex items-center justify-center my-5 w-full">
-            <Link href={`/${slug}/download`} className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">
-              {t("freeDownload")}
-            </Link>
-          </div>
 
           <TempAd />
 

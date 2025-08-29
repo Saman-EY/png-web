@@ -33,18 +33,19 @@
 
   "Details": {
     "copyRight": "Política de copyright",
-    "imageDetails": "Detalles de la imagen",
-    "contributor": "Colaborador",
-    "resolution": "Resolución",
-    "fileSize": "Tamaño de archivo",
-    "category": "Categoría",
-    "freeDownload": "Descarga gratuita",
+    "freeDownload": "Continuar",
     "similar": "Foto similar"
   },
   "downloadPage": {
     "size": "Tamaño:",
     "freeDownload": "Descarga gratuita",
     "unlimitedDownloads": "Descargas ilimitadas",
+    "imageDetails": "Detalles de la imagen",
+    "contributor": "Colaborador",
+    "resolution": "Resolución",
+    "fileSize": "Tamaño de archivo",
+    "category": "Categoría",
+
     "noAttribution": "Sin atribución"
   },
 
