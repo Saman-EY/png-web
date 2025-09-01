@@ -82,8 +82,8 @@ export const PngCard = ({ item, detailsData }: { item: PngItemT; detailsData: Pn
 
       {/* hover */}
       <div className=" opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all  absolute top-0 left-0 w-full h-full bg-white/70 z-20 flex flex-col justify-center items-center">
-        <span className="truncate px-3 font-semibold text-lg w-full text-center">{matchedItemDetails.title}</span>
-        <p className="font-medium line-clamp-3 px-3 text-xs mt-3">{matchedItemDetails.Description}</p>
+        <span className="truncate px-3 font-semibold text-lg w-full text-center">{matchedItemDetails?.title}</span>
+        <p className="font-medium line-clamp-3 px-3 text-xs mt-3">{matchedItemDetails?.Description}</p>
         <button className="px-4 py-2 bg-green-200 text-xs font-bold absolute bottom-11 rounded-t-full mt-3">
           Download
         </button>
