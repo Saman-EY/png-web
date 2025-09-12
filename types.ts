@@ -33,3 +33,19 @@ export interface PngItemDetailT {
   Size: string; // e.g. "1.80 MB"
   tag: string; // comma-separated tags
 }
+export interface IImageData {
+  href: string;
+  title: string;
+  height: string;
+  width: string;
+  "data-original": string;
+  dataDetals: {
+    href: string;
+    title: string;
+    Description: string;
+    Contributor: string;
+    Resolution: string;
+    Size: string;
+    tag: string;
+  };
+}

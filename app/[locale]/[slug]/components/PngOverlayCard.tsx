@@ -1,9 +1,9 @@
-import { PngItemT } from "@/types";
+import { IImageData, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
-export const PngOverlayCard = ({ item }: { item: PngItemT }) => {
+export const PngOverlayCard = ({ item }: { item: IImageData }) => {
   const slug = getSlug(item.href);
 
   return (

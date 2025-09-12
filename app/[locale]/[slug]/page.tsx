@@ -1,6 +1,6 @@
 import { ScrollToTop } from "@/components/ScrollToTop";
 import SearchBox from "@/components/SearchBox";
-import { PngItemDetailT, PngItemT } from "@/types";
+import { IImageData, PngItemDetailT, PngItemT } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -14,22 +14,20 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const t = await getTranslations("Details");
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
-    const response2 = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cleanpng.landing.json`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
 
-    if (!response.ok || !response2.ok) {
+
+    if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
 
     const data = await response.json();
-    const landingData = await response2.json();
 
-    const matchedItemDetails: PngItemDetailT = data.find((item: PngItemDetailT) => getSlug(item.href) === slug);
-    const matchedItemLanding: PngItemT = landingData.find((item: PngItemT) => getSlug(item.href) === slug);
+    const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
-    const tags = matchedItemDetails.tag.split(",").map((tag: string) => tag.trim());
+    const tags = matchedItem.dataDetals.tag.split(",").map((tag: string) => tag.trim());
 
-    if (!matchedItemDetails) {
+    if (!matchedItem) {
       return (
         <div className="text-red-500 p-4 font-bold text-xl h-60 bg-red-100 flex items-center justify-center">
           ITEM NOT FOUND :(
@@ -52,14 +50,14 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
               className="rounded-xl w-full max-w-[250px] mx-auto  md:w-[500px] md:h-[400px] object-cover"
               width={500}
               height={500}
-              src={matchedItemLanding["data-original"]}
-              alt={matchedItemLanding.title}
+              src={matchedItem["data-original"]}
+              alt={matchedItem.title}
             />
 
             <div className="flex flex-col gap-3">
-              <h5 className="font-semibold text-lg md:mt-10">{matchedItemDetails.title}</h5>
+              <h5 className="font-semibold text-lg md:mt-10">{matchedItem.title}</h5>
 
-              <p>{matchedItemDetails.Description}</p>
+              <p>{matchedItem.dataDetals.Description}</p>
               <Link href={`/${slug}/copyright-policy`} className="text-[#BC90FF] font-semibold hover:underline">
                 &copy; {t("copyRight")}
               </Link>
@@ -81,7 +79,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
 
           <TempAd />
 
-          <SimilarCards landingData={landingData} />
+          <SimilarCards landingData={data} />
         </section>
       </>
     );

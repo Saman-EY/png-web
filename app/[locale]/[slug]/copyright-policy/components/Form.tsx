@@ -9,7 +9,7 @@ function Form() {
 
   const finalUrl = url.substring(0, url.lastIndexOf("/"));
 
-  console.log("*Final URL:", finalUrl);
+  // console.log("*Final URL:", finalUrl);
 
   useEffect(() => {
     setUrl(window.location.href); // full current URL

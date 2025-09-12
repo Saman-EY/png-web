@@ -1,5 +1,5 @@
 import SearchBox from "@/components/SearchBox";
-import { PngItemDetailT, PngItemT } from "@/types";
+import { IImageData } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -12,23 +12,21 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
   const t = await getTranslations("downloadPage");
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
-    const response2 = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cleanpng.landing.json`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
 
-    if (!response.ok || !response2.ok) {
+    if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
 
     const data = await response.json();
-    const landingData = await response2.json();
 
-    const matchedItemDetails: PngItemDetailT = data.find((item: PngItemDetailT) => getSlug(item.href) === slug);
-    const matchedItemLanding: PngItemT = landingData.find((item: PngItemT) => getSlug(item.href) === slug);
-    const tags = matchedItemDetails.tag.split(",").map((tag: string) => tag.trim());
+    const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
-    console.log("*details", slug, matchedItemDetails);
+    const tags = matchedItem.dataDetals.tag.split(",").map((tag: string) => tag.trim());
 
-    if (!matchedItemDetails) {
+    // console.log("*details", slug, matchedItem);
+
+    if (!matchedItem) {
       return (
         <div className="text-red-500 p-4 font-bold text-xl h-60 bg-red-100 flex items-center justify-center">
           ITEM NOT FOUND :(
@@ -42,7 +40,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
 
         <TempAd />
 
-        <h6 className="font-bold text-2xl max-w-[1000px] mx-auto">{matchedItemDetails.title}</h6>
+        <h6 className="font-bold text-2xl max-w-[1000px] mx-auto">{matchedItem?.title}</h6>
 
         {/* Details */}
         <section className="w-full max-w-[1000px] bg-white rounded-2xl shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026] mx-auto p-5 mb-10 pb-12 mt-5">
@@ -51,17 +49,17 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
           <div className="flex justify-between w-full max-w-[70%] mx-auto mb-8 mt-8">
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("contributor")}</span>
-              <span>{matchedItemDetails.Contributor ?? "-"}</span>
+              <span>{matchedItem.dataDetals.Contributor ?? "-"}</span>
             </div>
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("resolution")}</span>
-              <span>{matchedItemDetails.Resolution ?? "-"}</span>
+              <span>{matchedItem.dataDetals.Resolution ?? "-"}</span>
             </div>
           </div>
           <div className="flex justify-between w-full max-w-[70%] mx-auto">
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("fileSize")}</span>
-              <span>{matchedItemDetails.Size ?? "-"}</span>
+              <span>{matchedItem.dataDetals.Size ?? "-"}</span>
             </div>
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("category")}</span>
@@ -72,8 +70,8 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
 
         <section className="rounded-2xl my-5 bg-[#E6DAF8] p-5 flex flex-col md:flex-row gap-3 md:gap-5 max-w-[1000px] mx-auto shadow-[0px_2px_3px_0px_#0000004D,0px_6px_10px_4px_#00000026]">
           <Image
-            src={matchedItemLanding["data-original"]}
-            alt={matchedItemDetails.title}
+            src={matchedItem["data-original"]}
+            alt={matchedItem.title}
             width={500}
             height={500}
             className="w-full md:w-1/2  object-cover rounded-xl"
@@ -81,7 +79,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
 
           <div className="flex flex-col justify-center items-center w-full md:w-1/2 gap-5">
             <h6 className="font-bold text-2xl">
-              {t("size")} {matchedItemDetails.Size}
+              {t("size")} {matchedItem.dataDetals.Size}
             </h6>
             <Link href={`/${slug}/download`} className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">
               {t("freeDownload")}
@@ -102,7 +100,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string }> }) {
           ))}
         </section>
 
-        <SimilarCards landingData={landingData} />
+        <SimilarCards landingData={data} />
       </section>
     );
   } catch (error) {
