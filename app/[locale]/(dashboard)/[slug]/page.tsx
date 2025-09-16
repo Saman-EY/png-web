@@ -9,13 +9,35 @@ import { SimilarCards } from "./components/SimilarCards";
 import { getTranslations } from "next-intl/server";
 import Timer from "./components/Timer";
 
-async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+async function DetailPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
   const t = await getTranslations("Details");
 
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
+  console.log(locale, "ssssssss");
 
+  let endpoint = "";
+
+  switch (locale) {
+    case "es":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/spanish.json`;
+      break;
+    case "pt":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/portuguese.json`;
+      break;
+    case "de":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/german.json`;
+      break;
+    case "fr":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/french.json`;
+      break;
+    case "en":
+    default:
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`;
+      break;
+  }
+
+  try {
+    const response = await fetch(endpoint);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");

@@ -9,19 +9,36 @@ import { getTranslations } from "next-intl/server";
 const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 
 // Move the PNGContainer to a separate component that can be suspended
-async function PNGContainerWithData() {
-  try {
-    // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/cleanpng.landing.json`);
-    // const detailsData = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/details.json`);
+async function PNGContainerWithData({ locale }: { locale: string }) {
+  let endpoint = "";
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
+  switch (locale) {
+    case "es":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/spanish.json`;
+      break;
+    case "pt":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/portuguese.json`;
+      break;
+    case "de":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/german.json`;
+      break;
+    case "fr":
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/french.json`;
+      break;
+    case "en":
+    default:
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`;
+      break;
+  }
+
+  try {
+    const response = await fetch(endpoint);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
 
     const data = await response.json();
-    console.log(data);
 
     return <PNGContainer data={data} />;
   } catch (error) {
@@ -32,16 +49,22 @@ async function PNGContainerWithData() {
 
 export default async function Home({
   searchParams,
+  params,
 }: {
-  searchParams: Promise<{ search?: string | undefined; category?: string | undefined }>;
+  searchParams: Promise<{
+    search?: string | undefined;
+    category?: string | undefined;
+  }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { category, search } = await searchParams;
+  const { locale } = await params;
 
   const t = await getTranslations("Landing");
 
-  // console.log("**queries", category, search);
-
   const currentQuery = search ? `search=${search}` : "";
+
+  // console.log(locale, "bbbbbb");
 
   return (
     <section className="w-full max-w-[1320px] mx-auto pb-10 pt-5 px-5">
@@ -90,7 +113,7 @@ export default async function Home({
           <Loader />
         }
       >
-        <PNGContainerWithData />
+        <PNGContainerWithData locale={locale} />
       </Suspense>
     </section>
   );
