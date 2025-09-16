@@ -40,7 +40,7 @@ function PNGContainer({ data }: { data: IImageData[] }) {
 
   return (
     <>
-      <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5 gap-4 mt-5">
+      <section className="columns-1 sm:columns-3 md:columns-4 lg:columns-5  gap-4 mt-5">
         {filteredData.slice(0, visibleCount).map((png) => (
           <div key={png.href} className="mb-4 break-inside-avoid">
             <PngCard item={png} />

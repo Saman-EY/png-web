@@ -31,6 +31,16 @@
     "inputPlaceholder": "Dirección de correo electrónico"
   },
 
+  "loginPage": {
+    "welcome": "Bienvenido",
+    "text": "Inicia sesión en tu cuenta",
+    "emailPlace": "Dirección de correo electrónico",
+    "passPlace": "Contraseña",
+    "signInBtn": "Iniciar sesión",
+    "xtext": "¿No tienes una cuenta?",
+    "signupLink": "Regístrate"
+  },
+
   "Details": {
     "copyRight": "Política de copyright",
     "freeDownload": "Continuar",

@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
+import UserIcon from "@/assets/svgs/UserIcon";
 
 // const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 const Languages = [
@@ -118,6 +119,12 @@ function Header() {
         </button>
 
         <ul className=" gap-8 items-center font-bold hidden lg:flex text-lg">
+          {/* <li>
+            <Link href="/login">{LNav("login")}</Link>
+          </li>
+          <li>
+            <Link href="/dashboard">{LNav("dashboard")}</Link>
+          </li> */}
           <li>
             <Link href="/">{LNav("home")}</Link>
           </li>
@@ -247,6 +254,14 @@ function Header() {
               </div>
             )}
           </div>
+
+          <Link
+            href="/dashboard"
+            // href="/login"
+            className={`hover:bg-slate-100 transition-colors bg-white shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D] flex items-center justify-center rounded-full size-10 `}
+          >
+            <UserIcon />
+          </Link>
         </div>
         {/* </div> */}
       </header>

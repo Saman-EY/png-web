@@ -67,6 +67,17 @@
     "bySearchEngine": "Verkehrsquelle nach Suchmaschine",
     "byCountry": "Verkehrsquelle nach Land"
   },
+
+  "loginPage": {
+    "welcome": "Willkommen",
+    "text": "Melden Sie sich bei Ihrem Konto an",
+    "emailPlace": "E-Mail-Adresse",
+    "passPlace": "Passwort",
+    "signInBtn": "Anmelden",
+    "xtext": "Sie haben kein Konto?",
+    "signupLink": "Registrieren"
+  },
+
   "CopyRightPage": {
     "title": "Urheberrechtspolitik2",
     "subTitle": "Zuletzt aktualisiert: 6. Juli 2025",

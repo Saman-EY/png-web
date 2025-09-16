@@ -1,18 +1,23 @@
 {
   "NavbarLinks": {
+    "login": "Login",
+    "dashboard": "Dashboard",
     "home": "Home",
     "trends": "Trends",
     "policy": "Policy",
     "about": "About Us",
     "categories": "Categories"
   },
+
   "Cats": ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"],
+
   "Landing": {
     "title": "Free PNG Image",
     "subtitle": "With Transparent Backgrounds",
     "showMoreBtn": "Show More",
     "searchPlaceHolder": "Search PNG image..."
   },
+
   "Footer": {
     "home": "Home",
     "download": "Download",
@@ -36,6 +41,7 @@
     "freeDownload": "Continue",
     "similar": "Similar Photo"
   },
+
   "downloadPage": {
     "size": "Size:",
     "freeDownload": "Free Download",
@@ -47,6 +53,7 @@
     "category": "Category",
     "noAttribution": "No attribution"
   },
+
   "TermsPage": {
     "yourAgreement": "Your Agreement:",
     "policyText": "I confirm that I have read and accept the terms and conditions and privacy policy.",
@@ -99,5 +106,15 @@
     "input6Label": "Identify and describe the copyrighted work:",
     "input7Label": "Code",
     "submitBtn": "SUBMIT"
+  },
+
+  "loginPage": {
+    "welcome": "Welcome",
+    "text": "Sign in to your account",
+    "emailPlace": "Email Address",
+    "passPlace": "Password",
+    "signInBtn": "Sign In",
+    "xtext": "Don't have an account?",
+    "signupLink": "Sign up"
   }
 }

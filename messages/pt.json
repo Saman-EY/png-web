@@ -49,6 +49,16 @@
     "noAttribution": "Sem atribuição"
   },
 
+  "loginPage": {
+    "welcome": "Bem-vindo",
+    "text": "Entre na sua conta",
+    "emailPlace": "Endereço de e-mail",
+    "passPlace": "Senha",
+    "signInBtn": "Entrar",
+    "xtext": "Não tem uma conta?",
+    "signupLink": "Cadastre-se"
+  },
+
   "TermsPage": {
     "yourAgreement": "Seu Acordo:",
     "policyText": "Confirmo que li e aceito os termos e condições e a política de privacidade.",

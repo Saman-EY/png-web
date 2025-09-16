@@ -55,11 +55,12 @@ export default async function RootLayout({
       </head>
       <body suppressHydrationWarning className={`${inter.variable} antialiased flex flex-col min-h-screen`}>
         <NextIntlClientProvider>
-          <section className="flex-1">
+          {/* <section className="flex-1">
             <Header />
             <Providers>{children}</Providers>
           </section>
-          <Footer />
+          <Footer /> */}
+          <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>

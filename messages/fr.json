@@ -13,6 +13,17 @@
     "showMoreBtn": "Voir plus",
     "searchPlaceHolder": "Rechercher une image PNG..."
   },
+
+  "loginPage": {
+    "welcome": "Bienvenue",
+    "text": "Connectez-vous à votre compte",
+    "emailPlace": "Adresse e-mail",
+    "passPlace": "Mot de passe",
+    "signInBtn": "Se connecter",
+    "xtext": "Vous n’avez pas de compte ?",
+    "signupLink": "S’inscrire"
+  },
+
   "Footer": {
     "home": "Accueil",
     "download": "Télécharger",
