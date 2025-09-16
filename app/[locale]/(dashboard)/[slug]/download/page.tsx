@@ -33,7 +33,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
   }
 
   try {
-    const response = await fetch(endpoint, { cache: "no-store" });
+    const response = await fetch(endpoint);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");

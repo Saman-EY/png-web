@@ -4,8 +4,8 @@ import { getSlug } from "@/utils/functions";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 function PNGContainer({ data }: { data: IImageData[] }) {
   // const { data: temp, isLoading, isError } = useLandingPngsQry();
@@ -69,12 +69,9 @@ export default PNGContainer;
 export const PngCard = ({ item }: { item: IImageData }) => {
   const slug = getSlug(item.href);
 
-  const locale = useLocale();
-
   return (
     <Link
-      href={slug!}
-      locale={locale}
+      href={`/${slug}`}
       className="border group relative rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto block"
     >
       <Image width={+item.width} height={+item.height} src={item["data-original"]} alt={item.title} />
