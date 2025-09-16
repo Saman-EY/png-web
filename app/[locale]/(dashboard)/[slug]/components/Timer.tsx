@@ -1,6 +1,6 @@
 "use client";
+import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 function Timer({ slug }: { slug: string }) {

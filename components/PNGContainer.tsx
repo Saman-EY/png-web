@@ -2,10 +2,10 @@
 import { IImageData } from "@/types";
 import { getSlug } from "@/utils/functions";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 
 function PNGContainer({ data }: { data: IImageData[] }) {
   // const { data: temp, isLoading, isError } = useLandingPngsQry();
