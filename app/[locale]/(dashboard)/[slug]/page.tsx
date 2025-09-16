@@ -37,7 +37,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
   }
 
   try {
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, { cache: "no-store" });
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");

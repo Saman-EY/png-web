@@ -255,13 +255,13 @@ function Header() {
             )}
           </div>
 
-          <Link
+          {/* <Link
             href="/dashboard"
             // href="/login"
             className={`hover:bg-slate-100 transition-colors bg-white shadow-[0px_1px_3px_1px_#00000026,0px_1px_2px_0px_#0000004D] flex items-center justify-center rounded-full size-10 `}
           >
             <UserIcon />
-          </Link>
+          </Link> */}
         </div>
         {/* </div> */}
       </header>
