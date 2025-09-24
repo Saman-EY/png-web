@@ -8,7 +8,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import UserIcon from "@/assets/svgs/UserIcon";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 const Languages = [
@@ -38,15 +38,21 @@ function Header() {
   const LCat = useTranslations();
   const TagsData = LCat.raw("Cats");
 
+  const router = useRouter();
   const pathname = usePathname();
+  const currentLocale2 = useLocale();
 
-  const cleanPathname = (() => {
-    const parts = pathname.split("/");
-    if (locales.includes(parts[1])) {
-      return "/" + parts.slice(2).join("/"); // drop the locale part
-    }
-    return pathname;
-  })();
+  const handleChangeLocale = (prefix: string) => {
+    // Remove current locale from pathname
+    const segments = pathname.split("/");
+    segments[1] = prefix; // replace locale part with new prefix
+
+    const newPath = segments.join("/") || "/";
+    router.push(newPath); // navigate to the same page with new locale
+    // setOpen(false);
+  };
+
+  console.log("22", pathname.split("/"));
 
   const locale = useLocale();
 
@@ -253,16 +259,16 @@ function Header() {
                 onClick={() => null}
                 className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
               >
-                {Languages.map((lang) => (
-                  <Link
-                    key={lang.prefix}
-                    href={cleanPathname || "/"} // path without old locale
-                    locale={lang.prefix} // new locale
-                    onClick={() => setOpen(false)}
-                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block"
+                {Languages.map((lang, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleChangeLocale(lang.prefix)}
+                    className={`px-2 py-3 hover:bg-slate-100 w-full text-center block ${
+                      currentLocale2 === lang.prefix ? "bg-slate-200 font-semibold" : ""
+                    }`}
                   >
                     {lang.name}
-                  </Link>
+                  </button>
                 ))}
               </div>
             )}
