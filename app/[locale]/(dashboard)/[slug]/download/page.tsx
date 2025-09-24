@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { TempAd } from "../components/TempAd";
 import { SimilarCards } from "../components/SimilarCards";
 import { getTranslations } from "next-intl/server";
+import DownloadComponent from "../components/DownloadComponent";
 
 async function DownloadPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params;
@@ -43,9 +44,9 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
     const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
-    const tags = matchedItem.dataDetals.tag.split(",").map((tag: string) => tag.trim());
+    const tags = matchedItem.dataDetals?.tag.split(",").map((tag: string) => tag.trim());
 
-    // console.log("*details", slug, matchedItem);
+    console.log("*details", slug, matchedItem.title);
 
     if (!matchedItem) {
       return (
@@ -102,9 +103,20 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
             <h6 className="font-bold text-2xl">
               {t("size")} {matchedItem.dataDetals.Size}
             </h6>
-            <Link href={`/${slug}/download`} className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3">
+            {/* <a
+              className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3"
+              href={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`}
+              download={`${matchedItem.title}.png`}
+            >
               {t("freeDownload")}
-            </Link>
+            </a> */}
+            <DownloadComponent title={matchedItem.title} link={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`} />
+            {/* <Link
+              href={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`}
+              className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3"
+            >
+              {t("freeDownload")}
+            </Link> */}
             <div className="font-semibold text-lg flex flex-col">
               <span>- {t("unlimitedDownloads")}</span>
               <span>- {t("noAttribution")}</span>

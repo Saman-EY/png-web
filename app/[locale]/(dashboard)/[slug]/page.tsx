@@ -47,7 +47,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
 
     const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
-    const tags = matchedItem.dataDetals.tag.split(",").map((tag: string) => tag.trim());
+    const tags = matchedItem?.dataDetals?.tag.split(",").map((tag: string) => tag.trim());
 
     if (!matchedItem) {
       return (
@@ -79,7 +79,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
             <div className="flex flex-col gap-3">
               <h5 className="font-semibold text-lg md:mt-10">{matchedItem.title}</h5>
 
-              <p>{matchedItem.dataDetals.Description}</p>
+              <p>{matchedItem?.dataDetals?.Description}</p>
               <Link href={`/${slug}/copyright-policy`} className="text-[#BC90FF] font-semibold hover:underline">
                 &copy; {t("copyRight")}
               </Link>

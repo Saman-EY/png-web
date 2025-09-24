@@ -8,6 +8,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import UserIcon from "@/assets/svgs/UserIcon";
+import { usePathname } from "next/navigation";
 
 // const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 const Languages = [
@@ -17,6 +18,8 @@ const Languages = [
   { name: "German", prefix: "de" },
   { name: "Portuguese", prefix: "pt" },
 ];
+
+const locales = ["en", "fr", "es", "de", "pt"];
 
 function Header() {
   const [currentLocale, setCurrentLocale] = useState("English");
@@ -34,6 +37,16 @@ function Header() {
   const LNav = useTranslations("NavbarLinks");
   const LCat = useTranslations();
   const TagsData = LCat.raw("Cats");
+
+  const pathname = usePathname();
+
+  const cleanPathname = (() => {
+    const parts = pathname.split("/");
+    if (locales.includes(parts[1])) {
+      return "/" + parts.slice(2).join("/"); // drop the locale part
+    }
+    return pathname;
+  })();
 
   const locale = useLocale();
 
@@ -240,13 +253,13 @@ function Header() {
                 onClick={() => null}
                 className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
               >
-                {Languages.map((lang, index) => (
+                {Languages.map((lang) => (
                   <Link
-                    href={`/`}
-                    locale={lang.prefix}
-                    key={index}
+                    key={lang.prefix}
+                    href={cleanPathname || "/"} // path without old locale
+                    locale={lang.prefix} // new locale
                     onClick={() => setOpen(false)}
-                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block "
+                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block"
                   >
                     {lang.name}
                   </Link>

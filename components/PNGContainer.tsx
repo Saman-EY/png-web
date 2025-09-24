@@ -6,10 +6,11 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useLandingPngsQry } from "@/hooks/queries";
 
 function PNGContainer({ data }: { data: IImageData[] }) {
-  // const { data: temp, isLoading, isError } = useLandingPngsQry();
-  // console.log("*PNGContainer data:", temp);
+  const { data: temp, isLoading, isError } = useLandingPngsQry();
+  console.log("*PNGContainer data:", temp);
   const [visibleCount, setVisibleCount] = useState(25);
 
   const searchParams = useSearchParams();
