@@ -14,16 +14,16 @@ async function PNGContainerWithData({ locale }: { locale: string }) {
 
   switch (locale) {
     case "es":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/spanish.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/Spanish.json`;
       break;
     case "pt":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/portuguese.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/Portuguese.json`;
       break;
     case "de":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/german.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/German.json`;
       break;
     case "fr":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/french.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/French.json`;
       break;
     case "en":
     default:

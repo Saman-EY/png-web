@@ -26,8 +26,8 @@ const inter = Inter({
 // });
 
 export const metadata: Metadata = {
-  title: "PNG WEB",
-  description: "PNG WEB - Your Source for Free PNG Images",
+  title: "PNG MAGNET",
+  description: "PNG MAGNET - Your Source for Free PNG Images",
 };
 
 export default async function RootLayout({

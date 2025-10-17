@@ -16,16 +16,16 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
   switch (locale) {
     case "es":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/spanish.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/Spanish.json`;
       break;
     case "pt":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/portuguese.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/Portuguese.json`;
       break;
     case "de":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/german.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/German.json`;
       break;
     case "fr":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/french.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/French.json`;
       break;
     case "en":
     default:
@@ -46,8 +46,6 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
     const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
     const tags = matchedItem.tag.split(",").map((tag: string) => tag.trim());
-
-    
 
     console.log("*details", slug, matchedItem.title);
 
