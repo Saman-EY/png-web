@@ -13,8 +13,6 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
   const { slug, locale } = await params;
   const t = await getTranslations("Details");
 
-  console.log(locale, "ssssssss");
-
   let endpoint = "";
 
   switch (locale) {

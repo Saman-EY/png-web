@@ -47,6 +47,8 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
     const tags = matchedItem.tag.split(",").map((tag: string) => tag.trim());
 
+    
+
     console.log("*details", slug, matchedItem.title);
 
     if (!matchedItem) {
@@ -86,7 +88,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
             </div>
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("category")}</span>
-              <span>-</span>
+              <span>{tags[0]}</span>
             </div>
           </div>
         </section>
@@ -104,23 +106,12 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
             <h6 className="font-bold text-2xl">
               {t("size")} {matchedItem.file_size}
             </h6>
-            {/* <a
-              className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3"
-              href={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`}
-              download={`${matchedItem.title}.png`}
-            >
-              {t("freeDownload")}
-            </a> */}
+
             <DownloadComponent
               title={matchedItem.title}
               link={`${process.env.NEXT_PUBLIC_BASE_URL}/img/png/${matchedItem.original_file_name}.png`}
             />
-            {/* <Link
-              href={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`}
-              className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3"
-            >
-              {t("freeDownload")}
-            </Link> */}
+
             <div className="font-semibold text-lg flex flex-col">
               <span>- {t("unlimitedDownloads")}</span>
               <span>- {t("noAttribution")}</span>
