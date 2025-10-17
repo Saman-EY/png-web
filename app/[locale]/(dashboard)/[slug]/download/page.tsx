@@ -72,10 +72,10 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
           <h6 className="text-[#BC90FF] font-semibold">{t("imageDetails")} Image Details</h6>
 
           <div className="flex justify-between w-full max-w-[70%] mx-auto mb-8 mt-8">
-            <div className="flex flex-col gap-2 font-bold min-w-30 ">
+            {/* <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("contributor")}</span>
-              {/* <span>{matchedItem.dataDetals.Contributor ?? "-"}</span> */}
-            </div>
+              <span>{matchedItem.dataDetals.Contributor ?? "-"}</span>
+            </div> */}
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("resolution")}</span>
               <span>{matchedItem.resolution ?? "-"}</span>
