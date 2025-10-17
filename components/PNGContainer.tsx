@@ -75,20 +75,21 @@ export const PngCard = ({ item }: { item: IImageData }) => {
       href={`/${slug}`}
       className="border group relative rounded-3xl overflow-hidden shadow-md h-fit w-fit mx-auto block"
     >
-      <Image width={+item.width} height={+item.height} src={item["data-original"]} alt={item.title} />
+      <Image className=" min-h-40 object-cover" width={+item.width} height={+item.height} src={`${process.env.NEXT_PUBLIC_BASE_URL}/img/webp/${item?.original_file_name}.webp`} alt={item?.original_file_name} /> 
+      {/* https://packagemahdi.ir/img/webp/{{original_file_name}}.webp */}
 
       {/* hover */}
       <div className=" opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all  absolute top-0 left-0 w-full h-full bg-white/70 z-20 flex flex-col justify-center items-center">
-        <span className="truncate px-3 font-semibold text-lg w-full text-center">{item?.title}</span>
-        <p className="font-medium line-clamp-3 px-3 text-xs mt-3">{item?.dataDetals.Description}</p>
+        <span className="truncate px-3 font-semibold text-lg w-full text-center">{item?.original_file_name}</span>
+        <p className="font-medium line-clamp-3 px-3 text-xs mt-3">{item?.description}</p>
         <button className="px-4 py-2 bg-green-200 text-xs font-bold absolute bottom-11 rounded-t-full mt-3">
           Download
         </button>
       </div>
 
       <div className="bg-[#F9E0E3] flex font-semibold  divide-x-2 z-20 relative">
-        <button className="flex-1 p-3">{item?.dataDetals.Size || "-"}</button>
-        <button className="flex-1 p-3">{item?.dataDetals.Resolution || "-"}</button>
+        <button className="flex-1 p-3">{item?.file_size || "-"}</button>
+        <button className="flex-1 p-3">{item?.resolution || "-"}</button>
       </div>
     </Link>
   );

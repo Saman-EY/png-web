@@ -32,7 +32,8 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
       break;
     case "en":
     default:
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`;
+      // endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/output.json`;
       break;
   }
 
@@ -47,7 +48,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
 
     const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
-    const tags = matchedItem?.dataDetals?.tag.split(",").map((tag: string) => tag.trim());
+    const tags = matchedItem?.tag.split(",").map((tag: string) => tag.trim());
 
     if (!matchedItem) {
       return (
@@ -72,14 +73,15 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
               className="rounded-xl w-full max-w-[250px] mx-auto  md:w-[500px] md:h-[400px] object-cover"
               width={500}
               height={500}
-              src={matchedItem["data-original"]}
+              // src={matchedItem["data-original"]}
+              src={`${process.env.NEXT_PUBLIC_BASE_URL}/img/webp/${matchedItem?.original_file_name}.webp`}
               alt={matchedItem.title}
             />
 
             <div className="flex flex-col gap-3">
-              <h5 className="font-semibold text-lg md:mt-10">{matchedItem.title}</h5>
+              <h5 className="font-semibold text-lg md:mt-10">{matchedItem.original_file_name}</h5>
 
-              <p>{matchedItem?.dataDetals?.Description}</p>
+              <p>{matchedItem?.description}</p>
               <Link href={`/${slug}/copyright-policy`} className="text-[#BC90FF] font-semibold hover:underline">
                 &copy; {t("copyRight")}
               </Link>

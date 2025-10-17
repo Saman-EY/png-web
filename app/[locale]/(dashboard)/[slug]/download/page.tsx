@@ -29,7 +29,8 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
       break;
     case "en":
     default:
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/output.json`;
+
       break;
   }
 
@@ -44,7 +45,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
     const matchedItem: IImageData = data.find((item: IImageData) => getSlug(item.href) === slug);
 
-    const tags = matchedItem.dataDetals?.tag.split(",").map((tag: string) => tag.trim());
+    const tags = matchedItem.tag.split(",").map((tag: string) => tag.trim());
 
     console.log("*details", slug, matchedItem.title);
 
@@ -71,17 +72,17 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
           <div className="flex justify-between w-full max-w-[70%] mx-auto mb-8 mt-8">
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("contributor")}</span>
-              <span>{matchedItem.dataDetals.Contributor ?? "-"}</span>
+              {/* <span>{matchedItem.dataDetals.Contributor ?? "-"}</span> */}
             </div>
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("resolution")}</span>
-              <span>{matchedItem.dataDetals.Resolution ?? "-"}</span>
+              <span>{matchedItem.resolution ?? "-"}</span>
             </div>
           </div>
           <div className="flex justify-between w-full max-w-[70%] mx-auto">
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("fileSize")}</span>
-              <span>{matchedItem.dataDetals.Size ?? "-"}</span>
+              <span>{matchedItem.file_size ?? "-"}</span>
             </div>
             <div className="flex flex-col gap-2 font-bold min-w-30 ">
               <span className="text-emerald-700 ">{t("category")}</span>
@@ -92,7 +93,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
         <section className="rounded-2xl my-5 bg-[#E6DAF8] p-5 flex flex-col md:flex-row gap-3 md:gap-5 max-w-[1000px] mx-auto shadow-[0px_2px_3px_0px_#0000004D,0px_6px_10px_4px_#00000026]">
           <Image
-            src={matchedItem["data-original"]}
+            src={`${process.env.NEXT_PUBLIC_BASE_URL}/img/webp/${matchedItem?.original_file_name}.webp`}
             alt={matchedItem.title}
             width={500}
             height={500}
@@ -101,7 +102,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
           <div className="flex flex-col justify-center items-center w-full md:w-1/2 gap-5">
             <h6 className="font-bold text-2xl">
-              {t("size")} {matchedItem.dataDetals.Size}
+              {t("size")} {matchedItem.file_size}
             </h6>
             {/* <a
               className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3"
@@ -110,7 +111,10 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
             >
               {t("freeDownload")}
             </a> */}
-            <DownloadComponent title={matchedItem.title} link={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`} />
+            <DownloadComponent
+              title={matchedItem.title}
+              link={`${process.env.NEXT_PUBLIC_BASE_URL}/img/png/${matchedItem.original_file_name}.png`}
+            />
             {/* <Link
               href={`${process.env.NEXT_PUBLIC_BASE_URL}/img/${matchedItem.title}.png`}
               className="bg-[#5AB696] font-bold text-white rounded-xl px-7 py-3"

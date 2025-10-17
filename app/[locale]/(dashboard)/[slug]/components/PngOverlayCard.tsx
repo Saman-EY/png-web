@@ -15,12 +15,12 @@ export const PngOverlayCard = ({ item }: { item: IImageData }) => {
       <Image
         width={+item.width}
         height={+item.height}
-        src={item["data-original"]}
+        src={`${process.env.NEXT_PUBLIC_BASE_URL}/img/webp/${item?.original_file_name}.webp`}
         alt={item.title}
-        className="w-full object-cover"
+        className="w-full object-cover min-h-40"
       />
 
-      <div className="bg-white/70 absolute px-5 py-2 bottom-0 left-0 right-0 font-bold">{item.title}</div>
+      <div className="bg-white/70 absolute px-5 py-2 bottom-0 text-sm left-0 right-0 font-bold">{item.original_file_name}</div>
     </Link>
   );
 };

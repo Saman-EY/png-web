@@ -5,7 +5,8 @@ export const useLandingPngsQry = () => {
   return useQuery({
     queryKey: ["landing-png"],
     queryFn: async () => {
-      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
+      // const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/output.json`);
       return data;
     },
     staleTime: 1000 * 60 * 1, // 1 minute

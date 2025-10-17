@@ -34,18 +34,20 @@ export interface PngItemDetailT {
   tag: string; // comma-separated tags
 }
 export interface IImageData {
-  href: string;
-  title: string;
-  height: string;
+  description: string;
+  file_size: string;
   width: string;
-  "data-original": string;
-  dataDetals: {
-    href: string;
-    title: string;
-    Description: string;
-    Contributor: string;
-    Resolution: string;
-    Size: string;
-    tag: string;
-  };
+  height: string;
+  title: string;
+  original_file_name: string;
+  resolution: string;
+  href: string;
+  tag: string;
+
+  // "data-original": string;
+  // dataDetals: {
+  //   href: string;
+  //   title: string;
+  //   Contributor: string;
+  // };
 }

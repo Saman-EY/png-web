@@ -27,7 +27,7 @@ async function PNGContainerWithData({ locale }: { locale: string }) {
       break;
     case "en":
     default:
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`;
+      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/output.json`;
       break;
   }
 
