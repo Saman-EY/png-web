@@ -184,7 +184,7 @@
   border: 2px solid transparent;
   border-top: 2px solid white;
   border-radius: 50%;
-  opacity: 0;
+  /* opacity: 0; */
   animation: spin 1s linear infinite;
   transition: opacity 0.3s ease;
 }
@@ -365,7 +365,7 @@
 }
 
 .login-card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -475,6 +475,7 @@
 .login-btn {
   width: 100%;
   margin-bottom: 24px;
+  min-height: 52px;
 }
 
 /* Divider */

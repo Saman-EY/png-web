@@ -1,7 +1,9 @@
 "use client";
-import { use, useState } from "react";
-import "./login-syle.css";
+import { useState } from "react";
+import "../login-syle.css";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useLoginUser } from "@/hooks/mutation";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +11,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<{ email?: string; password?: string }>({});
   const [success, setSuccess] = useState(false);
+  const { mutate, isPending, isSuccess, error: registerError } = useLoginUser();
 
   const t = useTranslations("loginPage");
 
@@ -24,10 +27,11 @@ const Login = () => {
 
     if (Object.keys(newErrors).length === 0) {
       // fake success
-      setSuccess(true);
-      setTimeout(() => {
-        console.log("Redirecting...");
-      }, 2000);
+
+      mutate({
+        email: email,
+        password: password,
+      });
     }
   };
 
@@ -86,59 +90,16 @@ const Login = () => {
               {error.password && <span className="text-red-400 text-xs mt-2 px-2">{error.password}</span>}
             </div>
 
-            {/* <div className="form-options">
-            <label className="remember-wrapper">
-              <input
-                type="checkbox"
-                id="remember"
-                name="remember"
-                checked={remember}
-                onChange={(e) => setRemember(e.target.checked)}
-              />
-              <span className="checkbox-label">
-                <span className="checkmark"></span>
-                Remember me
-              </span>
-            </label>
-            <a href="#" className="forgot-password">
-              Forgot password?
-            </a>
-          </div> */}
-
-            <button type="submit" className="login-btn btn">
-              <span className="btn-text">{t("signInBtn")}</span>
-              <span className="btn-loader"></span>
+            <button disabled={isPending} type="submit" className="login-btn btn">
+              {isPending ? <span className="btn-loader"></span> : <span className="btn-text">{t("signInBtn")}</span>}
             </button>
           </form>
-          {/* 
-        <div className="divider">
-          <span>or continue with</span>
-        </div>
-
-        <div className="social-login">
-          <button type="button" className="social-btn google-btn">
-            <span className="social-icon google-icon"></span>
-            Google
-          </button>
-          <button type="button" className="social-btn github-btn">
-            <span className="social-icon github-icon"></span>
-            GitHub
-          </button>
-        </div> */}
 
           <div className="signup-link">
             <p>
-              {t("xtext")} <a href="#">{t("signupLink")}</a>
+              {t("xtext")} <Link href="/register">{t("signupLink")}</Link>
             </p>
           </div>
-
-          {/* {success && (
-            <div className="success-message">
-              <div className="success-icon">✓</div>
-              <h3>Login Successful!</h3>
-              <p>Redirecting to your dashboard...</p>
-            </div>
-          )} */}
         </div>
       </div>
     </section>

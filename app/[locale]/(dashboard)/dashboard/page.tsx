@@ -23,7 +23,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/eyeIcon.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">{t('mostViewd')}</h6>
+            <h6 className="font-bold">{t("mostViewd")}</h6>
             <span>hot-deal.org</span>
           </div>
         </Link>
@@ -36,12 +36,12 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/arrowLongDown.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">{t('mostDownloaded')}</h6>
+            <h6 className="font-bold">{t("mostDownloaded")}</h6>
             <span>hot-deal.org</span>
           </div>
         </Link>
 
-        <Link
+        {/* <Link
           href={"/dashboard?tab=traffic-by-search"}
           className="rounded-2xl bg-white px-4 py-4 flex items-center justify-center gap-3 w-full max-w-55 shadow-[0px_1px_3px_0px_#0000004D,0px_4px_8px_3px_#00000026]"
         >
@@ -49,7 +49,7 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/earth.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">{t('bySearchEngine')}</h6>
+            <h6 className="font-bold">{t("bySearchEngine")}</h6>
             <span>Google</span>
           </div>
         </Link>
@@ -62,14 +62,21 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
             <Image className="mr-1" src="/steeringWheel.svg" alt="logo" width={18} height={18} />
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
-            <h6 className="font-bold">{t('byCountry')}</h6>
+            <h6 className="font-bold">{t("byCountry")}</h6>
             <span>Iran</span>
           </div>
-        </Link>
+        </Link> */}
       </div>
 
       <section className="px-5">
         {tab === "most-viewd" ? (
+          <CustomTable data={topViewedData} />
+        ) : tab === "most-downloaded" ? (
+          <CustomTable data={topViewedData} />
+        ) : (
+          <CustomTable data={topViewedData} />
+        )}
+        {/* {tab === "most-viewd" ? (
           <CustomTable data={topViewedData} />
         ) : tab === "most-downloaded" ? (
           <CustomTable data={topViewedData} />
@@ -79,9 +86,9 @@ async function Dashboard({ searchParams }: { searchParams: Promise<{ tab?: strin
           <CustomTable data={countryData} />
         ) : (
           <CustomTable data={topViewedData} />
-        )}
+        )} */}
 
-        <BrokenImage />
+        {/* <BrokenImage /> */}
 
         {/* CHART */}
         <Chart />

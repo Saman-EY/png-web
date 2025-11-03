@@ -116,5 +116,16 @@
     "signInBtn": "Sign In",
     "xtext": "Don't have an account?",
     "signupLink": "Sign up"
+  },
+  "registerPage": {
+    "welcome": "Welcome",
+    "text": "Register a new account",
+    "namePlace": "User Name",
+    "emailPlace": "Email Address",
+    "passPlace": "Password",
+    "confirmPassPlace": "Confirm Password",
+    "registerBtn": "Sign Up",
+    "xtext": "Have an account?",
+    "signInLink": "Sign in"
   }
 }
