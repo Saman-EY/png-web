@@ -1,4 +1,4 @@
-import { IMostDownloadStat, tableT } from "@/types";
+import { IMostDownloadStat } from "@/types";
 import Image from "next/image";
 
 function CustomTable({ data, header }: { data?: IMostDownloadStat[]; header: any }) {

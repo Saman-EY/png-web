@@ -1,10 +1,8 @@
 "use client";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import BrokenImage from "./components/BrokenImage";
 import CustomTable from "./components/CustomTable";
 import Chart from "./components/Chart";
-import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useGetMostDownloadedQry } from "@/hooks/queries";

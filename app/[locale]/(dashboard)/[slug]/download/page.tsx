@@ -12,7 +12,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
   const { slug, locale } = await params;
   const t = await getTranslations("downloadPage");
 
-  let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products/${slug}`;
+  const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products/${slug}`;
   let finalData: IImageData | null = null;
 
   try {
@@ -71,7 +71,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
         <section className="rounded-2xl my-5 bg-[#E6DAF8] p-5 flex flex-col md:flex-row gap-3 md:gap-5 max-w-[1000px] mx-auto shadow-[0px_2px_3px_0px_#0000004D,0px_6px_10px_4px_#00000026]">
           <Image
             src={`${process.env.NEXT_PUBLIC_BASE_URL}/img/webp/${finalData?.original_file_name}.webp`}
-            alt={finalData?.title!}
+            alt={finalData?.title || ""}
             width={500}
             height={500}
             className="w-full md:w-1/2  object-cover rounded-xl"

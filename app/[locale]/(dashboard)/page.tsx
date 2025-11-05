@@ -28,9 +28,7 @@ async function PNGContainerWithData({ searchParams, locale }: { searchParams: an
     }
 
     // Fetch data
-    const response = await fetch(endpoint, {
-      cache: "no-store",
-    });
+    const response = await fetch(endpoint);
 
     if (!response.ok) throw new Error("Failed to fetch data");
 
