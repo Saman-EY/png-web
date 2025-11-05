@@ -3,44 +3,41 @@ import { Suspense } from "react";
 import Loader from "@/components/Loader";
 import Image from "next/image";
 import SearchBox from "@/components/SearchBox";
-import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-
-const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
+import { ProductTag } from "@/types";
+import TagsList from "./components/TagsList";
 
 // Move the PNGContainer to a separate component that can be suspended
-async function PNGContainerWithData({ locale }: { locale: string }) {
-  let endpoint = "";
 
-  switch (locale) {
-    case "es":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/Spanish.json`;
-      break;
-    case "pt":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/Portuguese.json`;
-      break;
-    case "de":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/German.json`;
-      break;
-    case "fr":
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/French.json`;
-      break;
-    case "en":
-    default:
-      endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/output.json`;
-      break;
-  }
-
+async function PNGContainerWithData({ searchParams, locale }: { searchParams: any; locale: string }) {
   try {
-    const response = await fetch(endpoint);
+    // Base API endpoint
+    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products`;
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch data");
+    if (searchParams && Object.keys(searchParams).length > 0) {
+      // ✅ Create URLSearchParams instance from params
+      const query = new URLSearchParams(searchParams as Record<string, string>);
+
+      // ✅ Always keep locale
+      if (locale) query.set("locale", locale);
+
+      endpoint += `?${query.toString()}`;
+    } else if (locale) {
+      // ✅ if no other params, just add locale
+      endpoint += `?locale=${locale}`;
     }
 
-    const data = await response.json();
+    // Fetch data
+    const response = await fetch(endpoint, {
+      cache: "no-store",
+    });
 
-    return <PNGContainer data={data} />;
+    if (!response.ok) throw new Error("Failed to fetch data");
+
+    const data = await response.json();
+    console.log("**loca", endpoint, searchParams, locale);
+
+    return <PNGContainer meta={data?.meta} data={data?.data} />;
   } catch (error) {
     console.error("Failed to fetch data:", error);
     return <div className="text-red-500 p-4">Failed to load images. Please try again later.</div>;
@@ -52,19 +49,38 @@ export default async function Home({
   params,
 }: {
   searchParams: Promise<{
-    search?: string | undefined;
-    category?: string | undefined;
+    search?: string;
+    tag?: string;
+    per_page?: string;
+    locale?: string;
+    page?: string;
   }>;
   params: Promise<{ locale: string }>;
 }) {
-  const { category, search } = await searchParams;
+  const t = await getTranslations("Landing");
+  const params2 = await searchParams;
   const { locale } = await params;
 
-  const t = await getTranslations("Landing");
+  console.log("**8", locale);
 
-  const currentQuery = search ? `search=${search}` : "";
+  // set default per_page
+  if (!params2.per_page) params2.per_page = "42";
 
-  // console.log(locale, "bbbbbb");
+  let tagsData: ProductTag[] = [];
+
+  const tagsEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/tags?page=1&per_page=5&search=&sort_by=name&sort_order=desc`;
+  try {
+    const response = await fetch(tagsEndpoint);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    const data = await response.json();
+    tagsData = data?.data;
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+  }
 
   return (
     <section className="w-full max-w-[1320px] mx-auto pb-10 pt-5 px-5">
@@ -88,32 +104,13 @@ export default async function Home({
 
       {/* Tags */}
       <div className="flex items-center justify-center flex-wrap gap-2 mt-5 mb-10">
-        {TagsData.map((tag, index) => (
-          <Link
-            href={category === tag ? `?${currentQuery}` : `?${currentQuery ? `${currentQuery}&` : ""}category=${tag}`}
-            key={index}
-            className={`border border-white rounded-full px-6 py-2   ${
-              category === tag ? "bg-white" : "bg-green-300"
-            }  text-black font-semibold`}
-          >
-            {tag}
-          </Link>
-        ))}
+        <TagsList list={tagsData} />
       </div>
-
-      {/* <AdBanner dataAdFormat="auto" dataFullWidthResponsive={true} dataAdSlot="5884048699" /> */}
 
       {/* PNGs CONTAINER */}
       {/* Dynamic content with loading fallback */}
-      <Suspense
-        fallback={
-          // <div className="flex justify-center py-10">
-          //   <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
-          // </div>
-          <Loader />
-        }
-      >
-        <PNGContainerWithData locale={locale} />
+      <Suspense fallback={<Loader />}>
+        <PNGContainerWithData locale={locale} searchParams={params2} />
       </Suspense>
     </section>
   );

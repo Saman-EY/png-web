@@ -35,7 +35,6 @@ const Login = () => {
     }
   };
 
-  console.log(error, success);
 
   return (
     <section className="main-container">

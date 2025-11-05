@@ -1,52 +1,44 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 function SearchBox() {
-  const [serachValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
 
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
-  const category = searchParams.get("category");
 
   const t = useTranslations("Landing");
 
   useEffect(() => {
-    if (search) {
-      setSearchValue(search);
-    } else {
-      setSearchValue("");
-    }
+    setSearchValue(search ?? "");
   }, [search]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
     const value = event.target.value;
     setSearchValue(value);
 
-    // Clear previous timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    // Clear previous debounce timer
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    // Debounce navigation
     timeoutRef.current = setTimeout(() => {
-      const query = value.trim();
-      let url = "/";
+      const params = new URLSearchParams(searchParams.toString());
 
-      if (query && category) {
-        url = `/?search=${encodeURIComponent(query)}&category=${category}`;
-      } else if (query) {
-        url = `/?search=${encodeURIComponent(query)}`;
-      } else if (category) {
-        url = `/?category=${category}`;
+      if (value.trim()) {
+        params.set("search", value.trim());
+      } else {
+        params.delete("search");
       }
 
-      router.push(url);
+      params.set("page", "1");
+
+      const queryString = params.toString();
+      router.push(queryString ? `/?${queryString}` : "/");
     }, 500);
   };
 
@@ -59,11 +51,11 @@ function SearchBox() {
       {/* input */}
       <input
         name="search"
-        value={serachValue}
+        value={searchValue}
         onChange={handleSearch}
         type="text"
         placeholder={t("searchPlaceHolder")}
-        className="w-full"
+        className="w-full outline-none"
       />
     </div>
   );

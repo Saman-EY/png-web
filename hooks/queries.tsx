@@ -6,7 +6,8 @@ export const useLandingPngsQry = () => {
     queryKey: ["landing-png"],
     queryFn: async () => {
       // const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/mixpng.json`);
-      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/output.json`);
+      // const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/output.json`);
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL2}/products`);
       return data;
     },
     staleTime: 1000 * 60 * 1, // 1 minute
@@ -23,3 +24,26 @@ export const useLandingPngsQry = () => {
 //     staleTime: 1000 * 60 * 1, // 1 minute
 //   });
 // };
+
+export const useGetMostDownloadedQry = () => {
+  return useQuery({
+    queryKey: ["most-download-list"],
+    queryFn: async () => {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL2}/stats/most-downloaded`);
+
+      return data;
+    },
+    staleTime: 1000 * 60 * 1, // 1 minute
+  });
+};
+export const useGetTagsQry = () => {
+  return useQuery({
+    queryKey: ["tags-list"],
+    queryFn: async () => {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL2}/tags?page=1&per_page=5&search=&sort_by=name&sort_order=desc`);
+
+      return data;
+    },
+    staleTime: 1000 * 60 * 1, // 1 minute
+  });
+};

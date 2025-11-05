@@ -33,21 +33,66 @@ export interface PngItemDetailT {
   Size: string; // e.g. "1.80 MB"
   tag: string; // comma-separated tags
 }
-export interface IImageData {
-  description: string;
-  file_size: string;
-  width: string;
-  height: string;
-  title: string;
-  original_file_name: string;
-  resolution: string;
-  href: string;
-  tag: string;
 
-  // "data-original": string;
-  // dataDetals: {
-  //   href: string;
-  //   title: string;
-  //   Contributor: string;
-  // };
+export interface ITagData {
+  id: number;
+  name: string;
 }
+
+export interface ProductTagPivot {
+  product_id: string;
+  tag_id: string;
+}
+
+export interface ProductTag {
+  id: number;
+  name: string;
+  pivot: ProductTagPivot;
+}
+
+export interface IImageData {
+  id: number;
+  title: string;
+  description: string;
+  original_file_name: string;
+  height: string;
+  width: string;
+  file_size: string;
+  resolution: string;
+  display_url: string;
+  download_url: string;
+  views_count: string;
+  downloads_count: string;
+  tags: ProductTag[];
+}
+
+export interface IMostDownloadStat {
+  id: number;
+  title: string;
+  display_url: string;
+  views_count: string;
+  downloads_count: string;
+  created_at: string; // ISO timestamp (e.g., "2025-11-04T15:22:06.000000Z")
+}
+
+interface ProductsPageProps {
+  searchParams: {
+    search?: string;
+    tag?: string;
+    per_page?: string;
+    locale?: string;
+    page?: string;
+  };
+}
+
+export type IMeta = {
+  current_page: number;
+  last_page: number;
+  per_page: number;
+  total: number;
+  search_query: string | null;
+  tag_filter: string | null;
+  locale: string;
+  sort_by: string;
+  sort_order: "asc" | "desc";
+};

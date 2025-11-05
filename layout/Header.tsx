@@ -9,6 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import UserIcon from "@/assets/svgs/UserIcon";
 import { usePathname, useRouter } from "next/navigation";
+import { useGetTagsQry } from "@/hooks/queries";
 
 // const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 const Languages = [
@@ -42,6 +43,10 @@ function Header() {
   const pathname = usePathname();
   const currentLocale2 = useLocale();
 
+  const { data: tagsData } = useGetTagsQry();
+
+  console.log("**tags", tagsData?.data);
+
   const handleChangeLocale = (prefix: string) => {
     // Remove current locale from pathname
     const segments = pathname.split("/");
@@ -51,8 +56,6 @@ function Header() {
     router.push(newPath); // navigate to the same page with new locale
     // setOpen(false);
   };
-
-  console.log("22", pathname.split("/"));
 
   const locale = useLocale();
 
@@ -227,14 +230,14 @@ function Header() {
                 onClick={() => null}
                 className="bg-white absolute top-[85%] left-[50%] -translate-x-1/2 md:translate-x-0 md:left-0 mt-2 w-full rounded-b-3xl shadow-lg overflow-hidden min-w-20"
               >
-                {TagsData.slice(0, 4).map((tag: string, index: number) => (
+                {tagsData?.data.slice(0, 4).map((tag: any, index: number) => (
                   <Link
-                    href={`/?category=${tag}`}
+                    href={`/?tag=${tag.name}`}
                     key={index}
                     onClick={() => setOpen(false)}
-                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block "
+                    className="px-2 py-3 hover:bg-slate-100 w-full text-center block truncate"
                   >
-                    {tag}
+                    {tag.name}
                   </Link>
                 ))}
               </div>
