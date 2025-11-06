@@ -13,7 +13,7 @@ export const useLoginUser = () => {
     },
 
     onSuccess: (data) => {
-      console.log("✅ Logged in:", data);
+      // console.log("✅ Logged in:", data);
 
       // ✅ Invalidate any user-related queries
       queryClient.invalidateQueries({ queryKey: [""] });
@@ -45,7 +45,7 @@ export const useRegisterUser = () => {
     },
 
     onSuccess: (data) => {
-      console.log("✅ registered:", data);
+      // console.log("✅ registered:", data);
 
       // ✅ Invalidate any user-related queries
       queryClient.invalidateQueries({ queryKey: [""] });

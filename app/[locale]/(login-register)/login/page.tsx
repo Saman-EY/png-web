@@ -94,11 +94,11 @@ const Login = () => {
             </button>
           </form>
 
-          <div className="signup-link">
+          {/* <div className="signup-link">
             <p>
               {t("xtext")} <Link href="/register">{t("signupLink")}</Link>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

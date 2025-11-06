@@ -46,7 +46,7 @@ function Header() {
   const { data: tagsData } = useGetTagsQry();
   const { data: popularProsData } = useGetPopularProsQry();
 
-  console.log("**", popularProsData?.data);
+  // console.log("**", popularProsData?.data);
 
   const handleChangeLocale = (prefix: string) => {
     // Remove current locale from pathname

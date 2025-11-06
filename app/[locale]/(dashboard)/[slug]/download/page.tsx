@@ -39,7 +39,6 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
     finalData = data?.data.product;
     finalSimilarData = similarData?.data;
 
-    console.log("*", finalData);
 
     if (!finalData) {
       return (
