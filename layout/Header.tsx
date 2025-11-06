@@ -45,8 +45,6 @@ function Header() {
 
   const { data: tagsData } = useGetTagsQry();
 
-  console.log("**tags", tagsData?.data);
-
   const handleChangeLocale = (prefix: string) => {
     // Remove current locale from pathname
     const segments = pathname.split("/");

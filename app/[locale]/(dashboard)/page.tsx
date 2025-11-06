@@ -33,7 +33,7 @@ async function PNGContainerWithData({ searchParams, locale }: { searchParams: an
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const data = await response.json();
-    console.log("**loca", endpoint, searchParams, locale);
+    // console.log("**loca", endpoint, searchParams, locale);
 
     return <PNGContainer meta={data?.meta} data={data?.data} />;
   } catch (error) {
@@ -59,7 +59,7 @@ export default async function Home({
   const params2 = await searchParams;
   const { locale } = await params;
 
-  console.log("**8", locale);
+  // console.log("**8", locale);
 
   // set default per_page
   if (!params2.per_page) params2.per_page = "42";

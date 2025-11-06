@@ -40,8 +40,6 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
     finalData = data?.data.product;
     finalSimilarData = similarData?.data;
 
-    console.log("**detail page fetch", similarData?.data);
-
     if (!finalData) {
       return (
         <div className="text-red-500 p-4 font-bold text-xl h-60 bg-red-100 flex items-center justify-center">
@@ -89,7 +87,7 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
               scrollbarWidth: "thin",
               scrollbarColor: "#ffffff #989898",
             }}
-            className="w-full max-w-[800px] bg-white/40 max-h-140 border border-gray-400 rounded-lg overflow-auto mx-auto px-5 py-10 flex gap-4 flex-wrap justify-center"
+            className="w-full   max-w-[1000px] bg-white/40 max-h-140 border border-gray-400 rounded-lg overflow-auto mx-auto px-5 py-10 flex gap-4 flex-wrap justify-center"
           >
             {finalData?.tags.map((item) => (
               <Link
