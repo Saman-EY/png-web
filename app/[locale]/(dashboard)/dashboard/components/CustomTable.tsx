@@ -24,7 +24,7 @@ function CustomTable({ data, header }: { data?: IMostDownloadStat[]; header: any
           </div>
         ))} */}
         {data?.map((item, index) => (
-          <div key={index} className="flex items-center justify-between text-sm  ">
+          <div key={index} className="flex items-center justify-between text-sm   min-h-20">
             <span className="shrink-0 min-w-50 max-w-50 text-start font-bold flex items-center truncate gap-1">
               <Image src={item.display_url} width={37} height={37} alt="" />
               {item.title}

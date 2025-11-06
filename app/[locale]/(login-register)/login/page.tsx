@@ -4,6 +4,7 @@ import "../login-syle.css";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useLoginUser } from "@/hooks/mutation";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,6 @@ const Login = () => {
       });
     }
   };
-
 
   return (
     <section className="main-container">

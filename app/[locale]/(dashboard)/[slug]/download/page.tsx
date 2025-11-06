@@ -16,8 +16,8 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
   let finalSimilarData: IImageData[] | null = null;
 
   try {
-    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products/${slug}`;
-    let similarEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products/similar/title`;
+    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/products/${slug}`;
+    let similarEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/products/similar/title`;
 
     // ✅ Always include locale in query
     if (locale) {
@@ -96,7 +96,7 @@ async function DownloadPage({ params }: { params: Promise<{ slug: string; locale
 
         <section className="rounded-2xl my-5 bg-[#E6DAF8] p-5 flex flex-col md:flex-row gap-3 md:gap-5 max-w-[1000px] mx-auto shadow-[0px_2px_3px_0px_#0000004D,0px_6px_10px_4px_#00000026]">
           <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_URL}/img/webp/${finalData?.original_file_name}.webp`}
+            src={`${finalData?.display_url}`}
             alt={finalData?.title || ""}
             width={500}
             height={500}

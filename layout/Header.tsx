@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import UserIcon from "@/assets/svgs/UserIcon";
 import { usePathname, useRouter } from "next/navigation";
-import { useGetTagsQry } from "@/hooks/queries";
+import { useGetPopularProsQry, useGetTagsQry } from "@/hooks/queries";
 
 // const TagsData = ["Girl", "Boy", "Cartoon", "Character", "Anime", "Zombie"];
 const Languages = [
@@ -44,6 +44,9 @@ function Header() {
   const currentLocale2 = useLocale();
 
   const { data: tagsData } = useGetTagsQry();
+  const { data: popularProsData } = useGetPopularProsQry();
+
+  console.log("**", popularProsData?.data);
 
   const handleChangeLocale = (prefix: string) => {
     // Remove current locale from pathname
@@ -159,34 +162,16 @@ function Header() {
                 onClick={() => setOpenLinks(false)}
                 className="bg-white absolute top-[85%] left-0 mt-2 min-w-28 max-w-30 rounded-lg shadow-lg overflow-hidden  flex flex-col"
               >
-                <Link
-                  href={"/"}
-                  onClick={() => setOpen(false)}
-                  className="px-2 py-3 hover:bg-slate-100 w-full font-light text-sm truncate"
-                >
-                  Menu item
-                </Link>
-                <Link
-                  href={"/"}
-                  onClick={() => setOpen(false)}
-                  className="px-2 py-3 hover:bg-slate-100 w-full font-light text-sm truncate"
-                >
-                  Menu item
-                </Link>
-                <Link
-                  href={"/"}
-                  onClick={() => setOpen(false)}
-                  className="px-2 py-3 hover:bg-slate-100 w-full font-light text-sm truncate"
-                >
-                  Menu item
-                </Link>
-                <Link
-                  href={"/"}
-                  onClick={() => setOpen(false)}
-                  className="px-2 py-3 hover:bg-slate-100 w-full font-light text-sm truncate"
-                >
-                  Menu item
-                </Link>
+                {popularProsData?.data.map((item: any) => (
+                  <Link
+                    href={`/${item.id}`}
+                    key={item.id}
+                    onClick={() => setOpen(false)}
+                    className="px-2 py-3 hover:bg-slate-100 w-full font-light text-sm truncate"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
               </div>
             )}
           </li>

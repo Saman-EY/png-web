@@ -175,7 +175,7 @@ const Login = () => {
               {error.confirmPassword && <span className="text-red-400 text-xs mt-2 px-2">{error.confirmPassword}</span>}
             </div>
             <button disabled={isPending} type="submit" className="login-btn btn">
-              {isPending ? <span className="btn-loader"></span> : <span className="btn-text">{t("registerBtn")}</span>}
+              {!!isPending ? <span className="btn-loader"></span> : <span className="btn-text">{t("registerBtn")}</span>}
             </button>
           </form>
 

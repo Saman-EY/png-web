@@ -12,7 +12,7 @@ import TagsList from "./components/TagsList";
 async function PNGContainerWithData({ searchParams, locale }: { searchParams: any; locale: string }) {
   try {
     // Base API endpoint
-    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products`;
+    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/products`;
 
     if (searchParams && Object.keys(searchParams).length > 0) {
       // ✅ Create URLSearchParams instance from params
@@ -66,7 +66,7 @@ export default async function Home({
 
   let tagsData: ProductTag[] = [];
 
-  const tagsEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/tags?page=1&per_page=5&search=&sort_by=name&sort_order=desc`;
+  const tagsEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/tags?page=1&per_page=5&search=&sort_by=name&sort_order=desc`;
   try {
     const response = await fetch(tagsEndpoint);
 

@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
 
 const DownloadHeader = {
   title1: "Top Download PNGs",
-  title2: "downloads count",
-  title3: "views count",
+  title2: "Downloads Count",
+  title3: "Views Count",
   title4: "Date",
 };
 

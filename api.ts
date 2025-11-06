@@ -9,7 +9,13 @@ export const api = axios.create({
   },
 });
 
-export const publicApi = axios.create({ baseURL: process.env.NEXT_PUBLIC_BASE_URL });
+export const publicApi = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+  },
+});
 
 // Add a request interceptor to attach token
 api.interceptors.request.use(

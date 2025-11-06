@@ -18,8 +18,8 @@ async function DetailPage({ params }: { params: Promise<{ slug: string; locale: 
 
   try {
     // Base API endpoint
-    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products/${slug}`;
-    let similarEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL2}/products/similar/title`;
+    let endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/products/${slug}`;
+    let similarEndpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/products/similar/title`;
 
     // ✅ Always include locale in query
     if (locale) {
