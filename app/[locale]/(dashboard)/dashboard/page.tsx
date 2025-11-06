@@ -5,8 +5,9 @@ import CustomTable from "./components/CustomTable";
 import Chart from "./components/Chart";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { useGetMostDownloadedQry } from "@/hooks/queries";
+import { useGetMeQry, useGetMostDownloadedQry, useGetMostViewQry } from "@/hooks/queries";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const DownloadHeader = {
   title1: "Top Download PNGs",
@@ -17,17 +18,49 @@ const DownloadHeader = {
 
 function Dashboard() {
   const searchParams = useSearchParams();
+  const [period, setPeriod] = useState("week");
+  const [limit, setlimit] = useState(20);
   const tab = searchParams.get("tab") || "default";
   const t = useTranslations("Dashboard");
-  const [mostDownload, setMostDownload] = useState();
 
-  const { data } = useGetMostDownloadedQry();
-
+  const { data } = useGetMostDownloadedQry({ limit, period });
+  const { data: mostViewData } = useGetMostViewQry({ limit, period });
+  const { data: myData } = useGetMeQry();
 
   useEffect(() => {}, [data]);
 
+  const handleLogout = () => {
+    Cookies.remove("token", { path: "/" });
+    window.location.href = "/";
+  };
+
+  const formatedView = mostViewData?.data.map((item: any) => ({
+    title: item.title,
+    download: Number(item.downloads_count),
+    view: Number(item.views_count),
+  }));
+  const formatedDownload = data?.data.map((item: any) => ({
+    title: item.title,
+    download: Number(item.downloads_count),
+    view: Number(item.views_count),
+  }));
+
+  console.log("*dashboard", mostViewData?.data, formatedView);
+  // console.log(formatedView);
+
   return (
     <section>
+      <section className="py-2 w-full bg-white">
+        <div className="w-full max-w-[1000px] mx-auto flex items-center justify-between ">
+          <h6>
+            Account Name: <span className="text-blue-400">{myData?.user?.name} </span>{" "}
+          </h6>
+          <button onClick={handleLogout} className="bg-red-500 px-5 rounded-md text-white">
+            Logout
+          </button>
+        </div>
+      </section>
+
       {/* card container */}
       <div className="w-full max-w-[1320px] mx-auto mt-10 mb-5 flex flex-wrap gap-5 justify-center ">
         {/* carad */}
@@ -40,7 +73,7 @@ function Dashboard() {
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
             <h6 className="font-bold">{t("mostViewd")}</h6>
-            <span>hot-deal.org</span>
+            {/* <span>hot-deal.org</span> */}
           </div>
         </Link>
 
@@ -53,112 +86,53 @@ function Dashboard() {
           </span>
           <div className="flex flex-col gap-5 text-sm flex-1">
             <h6 className="font-bold">{t("mostDownloaded")}</h6>
-            <span>hot-deal.org</span>
+            {/* <span>hot-deal.org</span> */}
           </div>
         </Link>
       </div>
 
-      <section className="px-5 items-center">
-        {tab === "most-viewd" ? null : tab === "most-downloaded" ? (
+      <section className="px-5 items-center ">
+        <div className="w-full max-w-[950px] flex items-center gap-5 mx-auto">
+          {/* Period Dropdown */}
+          <select
+            value={period}
+            onChange={(e) => setPeriod(e.target.value)}
+            className="border border-gray-300 shadow rounded bg-white px-3 py-1"
+          >
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+            <option value="all">All Time</option>
+          </select>
+          <select
+            value={limit}
+            onChange={(e) => setlimit(+e.target.value)}
+            className="border border-gray-300 shadow rounded bg-white px-2 py-1"
+          >
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={30}>30</option>
+            <option value={40}>40</option>
+          </select>
+        </div>
+
+        {tab === "most-viewd" ? (
+          <CustomTable header={DownloadHeader} data={mostViewData?.data} />
+        ) : tab === "most-downloaded" ? (
           <CustomTable header={DownloadHeader} data={data?.data} />
         ) : (
           <CustomTable header={DownloadHeader} data={data?.data} />
         )}
-
-        {/* CHART */}
-        <Chart />
+        {tab === "most-viewd" ? (
+          <Chart data={formatedView} />
+        ) : tab === "most-downloaded" ? (
+          <Chart data={formatedDownload} />
+        ) : (
+          <Chart data={formatedDownload} />
+        )}
       </section>
     </section>
   );
 }
 
 export default Dashboard;
-
-const topViewedData = {
-  isIcon: true,
-
-  header: {
-    title1: "Top Viewed PNGs",
-    title2: "Size",
-    title3: "Resolution",
-    title4: "Date",
-  },
-
-  data: [
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-  ],
-};
-
-const topDownloadData = {
-  isIcon: true,
-
-  header: {
-    title1: "Top Download PNGs",
-    title2: "Size",
-    title3: "Resolution",
-    title4: "Date",
-  },
-
-  data: [
-    {
-      img: "",
-      title: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-    {
-      content1: "hot-deal.png",
-      content2: "1.248",
-      content3: "3000*3000",
-      content4: "Jun 2025",
-    },
-  ],
-};

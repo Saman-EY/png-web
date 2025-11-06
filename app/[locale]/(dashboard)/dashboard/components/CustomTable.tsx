@@ -11,7 +11,7 @@ function CustomTable({ data, header }: { data?: IMostDownloadStat[]; header: any
         <h6 className="text-base font-bold text-stone-700  min-w-30 text-center">{header.title4}</h6>
       </div>
 
-      <section className="flex flex-col gap-5 ">
+      <section className="flex flex-col gap-5 max-h-150">
         {/* {Array.from({ length: 5 }).map((_, index) => (
           <div key={index} className="flex items-center justify-between text-sm">
             <span className=" min-w-50 text-start font-bold flex items-center gap-1">
